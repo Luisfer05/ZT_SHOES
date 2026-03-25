@@ -10,6 +10,7 @@ class WebController extends Controller
     // ── Página de inicio (landing) ──────────────────────────────
     public function home()
     {
+<<<<<<< HEAD
         // Productos marcados para el slider "Nueva Colección"
         $coleccion = Producto::where('en_coleccion', true)
                         ->whereNotNull('imagen')
@@ -20,6 +21,12 @@ class WebController extends Controller
         $destacados = Producto::latest()->take(4)->get();
 
         return view('web.home', compact('destacados', 'coleccion'));
+=======
+        // 4 productos más recientes para la sección destacados
+        $destacados = Producto::latest()->take(4)->get();
+
+        return view('web.home', compact('destacados'));
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     }
 
     // ── Tienda con buscador y paginación ────────────────────────
@@ -48,6 +55,10 @@ class WebController extends Controller
     public function show($id)
     {
         $producto = Producto::findOrFail($id);
+<<<<<<< HEAD
+=======
+
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
         return view('web.item', compact('producto'));
     }
 }

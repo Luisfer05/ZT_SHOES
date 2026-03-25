@@ -12,6 +12,10 @@
     }
     .app-header .nav-link:hover { color: #e8b4b8 !important; }
 
+<<<<<<< HEAD
+=======
+    /* Logo ZT en el header */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .zt-admin-brand {
         font-family: Georgia, serif;
         font-size: 16px;
@@ -25,6 +29,10 @@
     }
     .zt-admin-brand span { color: #e8b4b8; }
 
+<<<<<<< HEAD
+=======
+    /* Links de navegación central */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .zt-nav-center { display: flex; gap: 4px; }
     .zt-nav-center .nav-link {
         padding: 6px 14px !important;
@@ -37,6 +45,10 @@
         color: #e8b4b8 !important;
     }
 
+<<<<<<< HEAD
+=======
+    /* Dropdown usuario */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .zt-user-btn {
         display: flex !important;
         align-items: center;
@@ -54,6 +66,10 @@
         font-size: 11px; font-weight: 600;
     }
 
+<<<<<<< HEAD
+=======
+    /* Dropdown menú */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .zt-admin-dropdown {
         border: 0.5px solid rgba(232,180,184,0.3) !important;
         border-radius: 12px !important;
@@ -65,6 +81,10 @@
         margin-top: 6px !important;
     }
 
+<<<<<<< HEAD
+=======
+    /* Cabecera del dropdown */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .zt-dropdown-head {
         padding: 14px 16px 12px;
         border-bottom: 0.5px solid rgba(255,255,255,0.08);
@@ -77,6 +97,10 @@
         font-size: 11px; color: rgba(232,180,184,0.7); margin: 0;
     }
 
+<<<<<<< HEAD
+=======
+    /* Items del dropdown */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .zt-admin-dropdown .dropdown-item {
         display: flex !important;
         align-items: center;
@@ -106,6 +130,7 @@
 
 <nav class="app-header navbar navbar-expand bg-secondary">
     <div class="container-fluid">
+<<<<<<< HEAD
         <li class="nav-item">
             <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
                 <i class="bi bi-list"></i>
@@ -116,6 +141,18 @@
         <ul class="navbar-nav mx-auto zt-nav-center">
             <li class="nav-item d-none d-md-block">
                 <a href="{{ route('web.home') }}" class="nav-link">Inicio</a>
+=======
+            <li class="nav-item">
+                <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+                    <i class="bi bi-list"></i>
+                </a>
+            </li>
+        {{-- Links centrales --}}
+        <ul class="navbar-nav mx-auto zt-nav-center">
+            
+            <li class="nav-item d-none d-md-block">
+                <a href="{{ route('web.home') }}" class="nav-link">Tienda</a>
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
             </li>
             @hasrole('admin')
             <li class="nav-item d-none d-md-block">
@@ -135,6 +172,10 @@
         {{-- Menú derecha --}}
         <ul class="navbar-nav ms-auto">
 
+<<<<<<< HEAD
+=======
+            {{-- Fullscreen --}}
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
             <li class="nav-item">
                 <a class="nav-link" href="#" data-lte-toggle="fullscreen">
                     <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
@@ -142,6 +183,10 @@
                 </a>
             </li>
 
+<<<<<<< HEAD
+=======
+            {{-- Usuario --}}
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
             @if(Auth::check())
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle zt-user-btn" data-bs-toggle="dropdown">
@@ -152,12 +197,17 @@
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end zt-admin-dropdown">
+<<<<<<< HEAD
+=======
+                    {{-- Cabecera --}}
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                     <li>
                         <div class="zt-dropdown-head">
                             <p class="zt-dropdown-head-name">{{ Auth::user()->name }}</p>
                             <p class="zt-dropdown-head-role">{{ Auth::user()->email }}</p>
                         </div>
                     </li>
+<<<<<<< HEAD
                     <li>
                         <a href="{{ route('web.home') }}" class="dropdown-item">
                             <svg class="zt-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -168,6 +218,14 @@
                         <a href="{{ route('tienda') }}" class="dropdown-item">
                             <svg class="zt-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                             Tienda
+=======
+
+                    {{-- Links --}}
+                    <li>
+                        <a href="{{ route('web.home') }}" class="dropdown-item">
+                            <svg class="zt-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            Ver tienda
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                         </a>
                     </li>
                     <li>
@@ -178,11 +236,21 @@
                     </li>
                     <li>
                         <a href="{{ route('perfil.pedidos') }}" class="dropdown-item">
+<<<<<<< HEAD
                             <svg class="zt-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                             Mis pedidos
                         </a>
                     </li>
                     <li><hr class="dropdown-divider"></li>
+=======
+                            <svg class="zt-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                            Mis pedidos
+                        </a>
+                    </li>
+
+                    <li><hr class="dropdown-divider"></li>
+
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                     <li>
                         <a href="#" class="dropdown-item danger"
                            onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();">

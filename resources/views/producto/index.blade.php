@@ -99,6 +99,7 @@
     }
     .pr-btn-delete:hover { background:#fee2e2; }
 
+<<<<<<< HEAD
     /* ── Botón colección ── */
     .pr-btn-coleccion {
         display:inline-flex; align-items:center; gap:5px;
@@ -120,6 +121,8 @@
         font-size:11px; font-weight:600;
     }
 
+=======
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .pr-empty { padding:56px 20px; text-align:center; }
     .pr-empty-icon {
         width:52px; height:52px; background:#fdf0f0; border-radius:50%;
@@ -138,7 +141,11 @@
     }
     .pr-footer .page-item.active .page-link { background:var(--ink); border-color:var(--ink); color:#fff; }
 
+<<<<<<< HEAD
     /* Modal */
+=======
+    /* Modal eliminar */
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
     .pr-modal .modal-content { border:none; border-radius:16px; overflow:hidden; }
     .pr-modal .modal-header { background:#fff; border-bottom:0.5px solid #f5eaea; padding:18px 20px; }
     .pr-modal .modal-title { font-size:15px; font-weight:600; color:var(--ink); }
@@ -213,7 +220,10 @@
                 <thead>
                     <tr>
                         <th>Opciones</th>
+<<<<<<< HEAD
                         <th>Colección</th>
+=======
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                         <th>#ID</th>
                         <th>Código</th>
                         <th>Nombre</th>
@@ -224,7 +234,11 @@
                 <tbody>
                     @if(count($registros) <= 0)
                         <tr>
+<<<<<<< HEAD
                             <td colspan="7">
+=======
+                            <td colspan="6">
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                                 <div class="pr-empty">
                                     <div class="pr-empty-icon">
                                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c47a82" stroke-width="1.5">
@@ -240,7 +254,10 @@
                     @else
                         @foreach($registros as $reg)
                             <tr>
+<<<<<<< HEAD
                                 {{-- Acciones --}}
+=======
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                                 <td>
                                     @can('producto-edit')
                                         <a href="{{ route('productos.edit', $reg->id) }}" class="pr-btn-edit">
@@ -264,6 +281,7 @@
                                         </button>
                                     @endcan
                                 </td>
+<<<<<<< HEAD
 
                                 {{-- Toggle colección --}}
                                 <td>
@@ -297,6 +315,8 @@
                                     @endcan
                                 </td>
 
+=======
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                                 <td style="font-weight:500; color:#888;">#{{ $reg->id }}</td>
                                 <td><span class="pr-code">{{ $reg->codigo }}</span></td>
                                 <td style="font-weight:500;">{{ $reg->nombre }}</td>

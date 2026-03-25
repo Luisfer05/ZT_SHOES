@@ -10,12 +10,17 @@
                 <li class="nav-item"><a class="nav-link" href="#">Categoria</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Tienda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Registrarse</a></li>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                 <li class="nav-item dropdown">
                     @auth
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">{{auth()->user()->name}}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
                         <li><a class="dropdown-item" href="{{route('perfil.pedidos')}}">
                             <i class="bi bi-box-seam me-1"></i> Mis pedidos
                         </a></li>
@@ -32,11 +37,19 @@
                                 </button>
                             </form>
                         </li>
+=======
+                        <li><a class="dropdown-item" href="{{route('perfil.pedidos')}}">Mis pedidos</a></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="{{route('perfil.edit')}}">Mi perfil</a></li>
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                     </ul>
                     @else
                         <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
                     @endauth
                 </li>
+<<<<<<< HEAD
             </ul>
 
             {{-- Carrito: usa la clave correcta según si está autenticado o no --}}
@@ -49,6 +62,15 @@
                 Carrito
                 <span class="badge bg-dark text-white ms-1 rounded-pill">
                     {{ $carritoCount }}
+=======
+
+            </ul>
+            <a href="{{route('carrito.mostrar')}}" class="btn btn-outline-dark">
+                <i class="bi-cart-fill me-1"></i>
+                Pedido
+                <span class="badge bg-dark text-white ms-1 rounded-pill">
+                {{ session('carrito') ? array_sum(array_column(session('carrito'), 'cantidad')) : 0 }}
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
                 </span>
             </a>
         </div>
