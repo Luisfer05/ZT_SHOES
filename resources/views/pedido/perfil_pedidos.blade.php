@@ -2,16 +2,8 @@
 @section('titulo', 'ZT|SHOES — Mis pedidos')
 
 @push('estilos')
-<<<<<<< HEAD
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-=======
-<<<<<<< HEAD
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 <style>
     :root {
         --rose: #e8b4b8; --rose-light: #f5dde0;
@@ -22,10 +14,6 @@
     .mis-page {
         background: #fdf8f8;
         min-height: calc(100vh - 64px);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         padding: 40px 48px 64px;
         font-family: 'DM Sans', sans-serif;
     }
@@ -91,8 +79,6 @@
     .mis-content {}
 
     .mis-header { margin-bottom: 24px; }
-<<<<<<< HEAD
-=======
 =======
         padding: 40px 64px 64px;
     }
@@ -108,23 +94,13 @@
 
     /* Header */
     .mis-header { margin-bottom: 28px; }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-eyebrow {
         font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
         text-transform: uppercase; color: var(--rose-dark); margin-bottom: 6px;
     }
     .mis-title {
         font-family: 'Cormorant Garamond', serif;
-<<<<<<< HEAD
         font-size: 34px; font-weight: 300; color: var(--ink);
-=======
-<<<<<<< HEAD
-        font-size: 34px; font-weight: 300; color: var(--ink);
-=======
-        font-size: 36px; font-weight: 300; color: var(--ink);
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     }
     .mis-title span { font-style: italic; color: var(--rose-dark); }
 
@@ -149,20 +125,8 @@
     .mis-noti-close {
         background: none; border: none; color: var(--muted);
         cursor: pointer; font-size: 16px; padding: 0; line-height: 1;
-<<<<<<< HEAD
     }
 
-=======
-<<<<<<< HEAD
-    }
-
-=======
-        flex-shrink: 0;
-    }
-
-    /* Alert general */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-alert {
         border-radius: 10px; padding: 12px 16px; font-size: 13px;
         margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
@@ -173,10 +137,6 @@
     /* Pedido card */
     .mis-pedido {
         background: #fff; border-radius: 16px;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         border: 0.5px solid #f0e0e2; margin-bottom: 16px;
         overflow: hidden;
     }
@@ -187,8 +147,6 @@
     .mis-pedido-header:hover { background: #fdf8f8; }
     .mis-pedido-id { font-size: 13px; font-weight: 600; color: var(--ink); }
     .mis-pedido-fecha { font-size: 12px; color: var(--muted); margin-top: 2px; }
-<<<<<<< HEAD
-=======
 =======
         border: 0.5px solid #f0e0e2; margin-bottom: 20px;
         overflow: hidden;
@@ -206,29 +164,12 @@
     }
     .mis-pedido-fecha { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-pedido-total {
         font-family: 'Cormorant Garamond', serif;
         font-size: 22px; font-weight: 600; color: var(--ink);
     }
-<<<<<<< HEAD
     .mis-pedido-right { display: flex; align-items: center; gap: 16px; }
     .mis-chevron { font-size: 14px; color: var(--muted); transition: transform 0.3s; }
-=======
-<<<<<<< HEAD
-    .mis-pedido-right { display: flex; align-items: center; gap: 16px; }
-    .mis-chevron { font-size: 14px; color: var(--muted); transition: transform 0.3s; }
-=======
-
-    .mis-pedido-right { display: flex; align-items: center; gap: 16px; }
-
-    .mis-chevron {
-        font-size: 14px; color: var(--muted);
-        transition: transform 0.3s;
-    }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-pedido-header.open .mis-chevron { transform: rotate(180deg); }
 
     /* Badge estado */
@@ -254,63 +195,24 @@
     .mis-badge.cancelado  { background: #f3f4f6; color: #4b5563; }
     .mis-badge.cancelado::before  { background: #9ca3af; }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     /* Cuerpo colapsable */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-pedido-body { display: none; border-top: 0.5px solid #f0e0e2; }
     .mis-pedido-body.open { display: block; }
 
     /* Timeline */
-<<<<<<< HEAD
     .mis-timeline { padding: 24px 24px 8px; border-bottom: 0.5px solid #f0e0e2; }
-=======
-<<<<<<< HEAD
-    .mis-timeline { padding: 24px 24px 8px; border-bottom: 0.5px solid #f0e0e2; }
-=======
-    .mis-timeline {
-        padding: 24px 24px 8px;
-        border-bottom: 0.5px solid #f0e0e2;
-    }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-timeline-title {
         font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
         text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
     }
-<<<<<<< HEAD
     .mis-timeline-steps { display: flex; align-items: center; position: relative; margin-bottom: 8px; }
     .mis-step { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; z-index: 1; }
-=======
-<<<<<<< HEAD
-    .mis-timeline-steps { display: flex; align-items: center; position: relative; margin-bottom: 8px; }
-    .mis-step { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; z-index: 1; }
-=======
-    .mis-timeline-steps {
-        display: flex; align-items: center; gap: 0;
-        position: relative; margin-bottom: 8px;
-    }
-
-    .mis-step {
-        display: flex; flex-direction: column; align-items: center;
-        flex: 1; position: relative; z-index: 1;
-    }
-
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-step-dot {
         width: 32px; height: 32px; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
         font-size: 14px; margin-bottom: 8px; border: 2px solid #f0dde0;
         background: #fff; transition: all 0.3s;
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-step.done   .mis-step-dot { background: var(--ink); border-color: var(--ink); color: #fff; }
     .mis-step.active .mis-step-dot { background: var(--rose-dark); border-color: var(--rose-dark); color: #fff; box-shadow: 0 0 0 4px rgba(196,122,130,0.2); }
     .mis-step.pending .mis-step-dot { background: #fdf8f8; border-color: #f0dde0; color: #ccc; }
@@ -321,8 +223,6 @@
     .mis-step-line.done { background: var(--ink); }
 
     /* Productos */
-<<<<<<< HEAD
-=======
 =======
 
     .mis-step.done .mis-step-dot {
@@ -354,42 +254,18 @@
     .mis-step-line.done { background: var(--ink); }
 
     /* Productos en el pedido */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-productos { padding: 16px 24px 20px; }
     .mis-prod-title {
         font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
         text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
     }
-<<<<<<< HEAD
     .mis-prod-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid #fdf0f1; }
     .mis-prod-item:last-child { border-bottom: none; }
     .mis-prod-img { width: 48px; height: 48px; border-radius: 10px; background: var(--rose-light); overflow: hidden; flex-shrink: 0; }
-=======
-<<<<<<< HEAD
-    .mis-prod-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid #fdf0f1; }
-    .mis-prod-item:last-child { border-bottom: none; }
-    .mis-prod-img { width: 48px; height: 48px; border-radius: 10px; background: var(--rose-light); overflow: hidden; flex-shrink: 0; }
-=======
-    .mis-prod-item {
-        display: flex; align-items: center; gap: 12px;
-        padding: 10px 0; border-bottom: 0.5px solid #fdf0f1;
-    }
-    .mis-prod-item:last-child { border-bottom: none; }
-    .mis-prod-img {
-        width: 48px; height: 48px; border-radius: 10px;
-        background: var(--rose-light); overflow: hidden; flex-shrink: 0;
-    }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-prod-img img { width: 100%; height: 100%; object-fit: cover; }
     .mis-prod-info { flex: 1; }
     .mis-prod-name { font-size: 13px; font-weight: 500; color: var(--ink); }
     .mis-prod-qty  { font-size: 12px; color: var(--muted); margin-top: 2px; }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-prod-price { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--ink); }
 
     .mis-pedido-total-row {
@@ -399,8 +275,6 @@
     }
     .mis-pedido-total-label { font-size: 13px; color: var(--muted); }
     .mis-pedido-total-val { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--ink); }
-<<<<<<< HEAD
-=======
 =======
     .mis-prod-price {
         font-family: 'Cormorant Garamond', serif;
@@ -419,8 +293,6 @@
         font-family: 'Cormorant Garamond', serif;
         font-size: 24px; font-weight: 600; color: var(--ink);
     }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 
     /* Empty */
     .mis-empty {
@@ -428,53 +300,19 @@
         background: #fff; border-radius: 16px; border: 0.5px solid #f0e0e2;
     }
     .mis-empty-icon { font-size: 52px; margin-bottom: 16px; }
-<<<<<<< HEAD
     .mis-empty h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
-=======
-<<<<<<< HEAD
-    .mis-empty h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
-=======
-    .mis-empty h3 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 26px; font-weight: 300; color: var(--ink); margin-bottom: 8px;
-    }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .mis-empty p { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
     .mis-empty-btn {
         padding: 13px 28px; background: var(--ink); color: #fff;
         border-radius: 30px; text-decoration: none; font-size: 13px;
-<<<<<<< HEAD
         font-weight: 500; transition: opacity 0.2s; display: inline-block;
     }
     .mis-empty-btn:hover { opacity: 0.82; color: #fff; }
-=======
-<<<<<<< HEAD
-        font-weight: 500; transition: opacity 0.2s; display: inline-block;
-    }
-    .mis-empty-btn:hover { opacity: 0.82; color: #fff; }
-=======
-        font-weight: 500; font-family: 'DM Sans', sans-serif;
-        transition: opacity 0.2s; display: inline-block;
-    }
-    .mis-empty-btn:hover { opacity: 0.82; color: #fff; }
-
-    @media (max-width: 768px) {
-        .mis-page { padding: 24px 16px 48px; }
-        .mis-step-label { font-size: 10px; }
-        .mis-pedido-header { flex-wrap: wrap; gap: 10px; }
-    }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 </style>
 @endpush
 
 @section('contenido')
 <div class="mis-page">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     <div class="mis-layout">
 
         {{-- ── SIDEBAR ── --}}
@@ -658,8 +496,6 @@
 
         </div>
     </div>
-<<<<<<< HEAD
-=======
 =======
 
     {{-- Breadcrumb --}}
@@ -816,8 +652,6 @@
         </div>
     @endif
 
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 </div>
 @endsection
 
@@ -827,16 +661,7 @@ function togglePedido(id) {
     const body    = document.getElementById('body-' + id);
     const chevron = document.getElementById('chevron-' + id);
     const header  = chevron.closest('.mis-pedido-header');
-<<<<<<< HEAD
     const isOpen  = body.classList.contains('open');
-=======
-<<<<<<< HEAD
-    const isOpen  = body.classList.contains('open');
-=======
-
-    const isOpen = body.classList.contains('open');
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     body.classList.toggle('open', !isOpen);
     header.classList.toggle('open', !isOpen);
 }

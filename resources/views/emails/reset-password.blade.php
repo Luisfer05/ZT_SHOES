@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -88,15 +84,4 @@
     </tr>
   </table>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
-=======
-<p>ArtCode.</p>
-<p>Has solicitado restablecer tu contraseña.</p>
-<p>Haz clic en el siguiente enlace para restablecerla:</p>
-<a href="{{ url('/password/reset/'.$token) }}">Restablecer contraseña</a>
-<p>Si no solicitaste esto, ignora este mensaje.</p>
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661

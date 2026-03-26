@@ -118,10 +118,6 @@
 
     .zt-slide.active img { transform: scale(1.06); }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .zt-slide-label {
         position:absolute; bottom:0; left:0; right:0;
         padding:14px 16px 16px;
@@ -134,11 +130,7 @@
     .zt-slide-name { font-size:13px; font-weight:500; color:#fff; line-height:1.3; max-width:65%; }
     .zt-slide-price { font-size:13px; font-weight:600; color:#e8b4b8; white-space:nowrap; }
 
-<<<<<<< HEAD
 =======
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     /* Dots */
     .zt-slider-dots {
         position: absolute; bottom: 16px; left: 50%;
@@ -349,23 +341,11 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
             {{-- Slider derecho — productos marcados en "Nueva Colección" --}}
-=======
-<<<<<<< HEAD
-            {{-- Slider derecho — productos marcados en "Nueva Colección" --}}
-=======
-            {{-- Slider derecho --}}
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             <div class="zt-slider-wrap">
                 <span class="zt-slider-badge">Nueva colección</span>
 
                 <div class="zt-slider" id="ztSlider">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                     @if($coleccion->isEmpty())
                         {{-- Fallback: imágenes de galería si aún no hay productos seleccionados --}}
                         @php
@@ -395,8 +375,6 @@
                             </a>
                         @endforeach
                     @endif
-<<<<<<< HEAD
-=======
 =======
                     @php
                         $slides = [
@@ -413,30 +391,20 @@
                             <img src="{{ asset($src) }}" alt="ZT Shoes colección {{ $i + 1 }}" loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
                         </div>
                     @endforeach
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                 </div>
 
                 <button class="zt-slider-btn prev" id="ztPrev" aria-label="Anterior">&#8592;</button>
                 <button class="zt-slider-btn next" id="ztNext" aria-label="Siguiente">&#8594;</button>
 
                 <div class="zt-slider-dots" id="ztDots">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                     @php $total = $coleccion->isEmpty() ? 5 : $coleccion->count(); @endphp
                     @for($i = 0; $i < $total; $i++)
                         <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
                     @endfor
-<<<<<<< HEAD
-=======
 =======
                     @foreach($slides as $i => $src)
                         <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
                     @endforeach
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                 </div>
             </div>
 

@@ -12,10 +12,6 @@ use Illuminate\Support\Str;
 class ProductoController extends Controller
 {
     use AuthorizesRequests;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 
     public function index(Request $request)
     {
@@ -53,69 +49,11 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('mensaje', 'Registro ' . $registro->nombre . ' agregado correctamente');
     }
 
-<<<<<<< HEAD
-=======
-=======
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
-    {
-        $this->authorize('producto-list'); 
-        $texto=$request->input('texto');
-        $registros=Producto::where('nombre', 'like',"%{$texto}%")
-                    ->orWhere('codigo', 'like',"%{$texto}%")
-                    ->orderBy('id', 'desc')
-                    ->paginate(10);
-        return view('producto.index', compact('registros','texto'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $this->authorize('producto-create'); 
-        return view('producto.action');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ProductoRequest $request)
-    {
-        $this->authorize('producto-create'); 
-        $registro = new Producto();
-        $registro->codigo=$request->input('codigo');
-        $registro->nombre=$request->input('nombre');
-        $registro->precio=$request->input('precio');
-        $registro->descripcion=$request->input('descripcion');
-        $sufijo=strtolower(Str::random(2));
-        $image = $request->file('imagen');
-        if (!is_null($image)){            
-            $nombreImagen=$sufijo.'-'.$image->getClientOriginalName();
-            $image->move('uploads/productos', $nombreImagen);
-            $registro->imagen = $nombreImagen;
-        }
-
-        $registro->save();
-        return redirect()->route('productos.index')->with('mensaje', 'Registro '.$registro->nombre. '  agregado correctamente');
-    }
-
-    /**
-     * Display the specified resource.
-     */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     public function show(string $id)
     {
         //
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     public function edit(string $id)
     {
         $this->authorize('producto-edit');
@@ -137,47 +75,11 @@ class ProductoController extends Controller
             $nombreImagen = $sufijo . '-' . $image->getClientOriginalName();
             $image->move('uploads/productos', $nombreImagen);
             $old_image = 'uploads/productos/' . $registro->imagen;
-<<<<<<< HEAD
-=======
-=======
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $this->authorize('producto-edit'); 
-        $registro=Producto::findOrFail($id);
-        return view('producto.action', compact('registro'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ProductoRequest $request, $id)
-    {
-        $this->authorize('producto-edit'); 
-        $registro=Producto::findOrFail($id);
-        $registro->codigo=$request->input('codigo');
-        $registro->nombre=$request->input('nombre');
-        $registro->precio=$request->input('precio');
-        $registro->descripcion=$request->input('descripcion');
-        $sufijo=strtolower(Str::random(2));
-        $image = $request->file('imagen');
-        if (!is_null($image)){            
-            $nombreImagen=$sufijo.'-'.$image->getClientOriginalName();
-            $image->move('uploads/productos', $nombreImagen);
-            $old_image = 'uploads/productos/'.$registro->imagen;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             if (file_exists($old_image)) {
                 @unlink($old_image);
             }
             $registro->imagen = $nombreImagen;
         }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         $registro->save();
         return redirect()->route('productos.index')->with('mensaje', 'Registro ' . $registro->nombre . ' actualizado correctamente');
     }
@@ -187,33 +89,10 @@ class ProductoController extends Controller
         $this->authorize('producto-delete');
         $registro  = Producto::findOrFail($id);
         $old_image = 'uploads/productos/' . $registro->imagen;
-<<<<<<< HEAD
-=======
-=======
-
-        $registro->save();
-
-        return redirect()->route('productos.index')->with('mensaje', 'Registro '.$registro->nombre. '  actualizado correctamente');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $this->authorize('producto-delete');
-        $registro=Producto::findOrFail($id);
-        $old_image = 'uploads/productos/'.$registro->imagen;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         if (file_exists($old_image)) {
             @unlink($old_image);
         }
         $registro->delete();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         return redirect()->route('productos.index')->with('mensaje', $registro->nombre . ' eliminado correctamente.');
     }
 
@@ -231,13 +110,4 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')
             ->with('mensaje', "\"$registro->nombre\" $estado la colección del home.");
     }
-<<<<<<< HEAD
 }
-=======
-}
-=======
-        return redirect()->route('productos.index')->with('mensaje', $registro->nombre. ' eliminado correctamente.');
-    }
-}
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661

@@ -15,9 +15,6 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             --rose:       #e8b4b8;
             --rose-light: #f5dde0;
             --rose-dark:  #c47a82;
@@ -31,8 +28,6 @@
         /* ══════════════════════════════════════
            NAVBAR — Desktop
         ══════════════════════════════════════ */
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             --rose: #e8b4b8;
             --rose-light: #f5dde0;
             --rose-dark: #c47a82;
@@ -44,30 +39,17 @@
         body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); }
 
         /* ── NAVBAR ── */
-<<<<<<< HEAD
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         .zt-nav {
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 40px; height: 64px;
             background: rgba(255,255,255,0.97);
             border-bottom: 0.5px solid #f0e0e2;
-<<<<<<< HEAD
             position: sticky; top: 0; z-index: 100;
-=======
-<<<<<<< HEAD
-            position: sticky; top: 0; z-index: 200;
-=======
-            position: sticky; top: 0; z-index: 100;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             backdrop-filter: blur(8px);
         }
         .zt-nav-logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 22px; font-weight: 600; letter-spacing: 0.08em;
-<<<<<<< HEAD
             color: var(--ink); text-decoration: none;
             flex-shrink: 0;
         }
@@ -75,100 +57,47 @@
 
         /* Links desktop */
         .zt-nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
-=======
-<<<<<<< HEAD
-            color: var(--ink); text-decoration: none; flex-shrink: 0;
-        }
-        .zt-nav-logo span { color: var(--rose-dark); }
-
-        /* Links escritorio */
-        .zt-nav-links {
-            display: flex; gap: 28px; align-items: center; list-style: none;
-        }
-=======
-            color: var(--ink); text-decoration: none;
-        }
-        .zt-nav-logo span { color: var(--rose-dark); }
-        .zt-nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         .zt-nav-links a {
             font-size: 13px; font-weight: 400; color: var(--muted);
             text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s;
         }
         .zt-nav-links a:hover, .zt-nav-links a.active { color: var(--ink); }
         .zt-nav-links a.active { font-weight: 500; }
-<<<<<<< HEAD
 
         /* Dropdown desktop */
-=======
-<<<<<<< HEAD
-
-        /* Dropdown escritorio */
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         .zt-dropdown { position: relative; }
         .zt-dropdown-toggle { cursor: pointer; user-select: none; }
         .zt-dropdown-menu {
             display: none; position: absolute; top: calc(100% + 6px); right: 0;
             background: var(--white); border: 0.5px solid #f0e0e2;
             border-radius: 12px; min-width: 180px; overflow: hidden;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             box-shadow: 0 8px 24px rgba(196,122,130,0.12); z-index: 300;
         }
         .zt-dropdown-menu.open { display: block; }
         .zt-dropdown-menu a {
             display: flex; align-items: center; gap: 8px;
             padding: 11px 16px; font-size: 13px;
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             box-shadow: 0 8px 24px rgba(196,122,130,0.12); z-index: 200;
         }
         .zt-dropdown-menu.open { display: block; }
         .zt-dropdown-menu a {
             display: block; padding: 11px 16px; font-size: 13px;
-<<<<<<< HEAD
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             color: var(--muted); text-decoration: none; transition: background 0.15s, color 0.15s;
         }
         .zt-dropdown-menu a:hover { background: var(--nude); color: var(--ink); }
         .zt-dropdown-menu hr { border: none; border-top: 0.5px solid #f0e0e2; margin: 4px 0; }
-<<<<<<< HEAD
 
         /* Cart button */
-=======
-<<<<<<< HEAD
-
-        /* Botón carrito */
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         .zt-cart-btn {
             display: flex; align-items: center; gap: 8px;
             padding: 9px 20px; background: var(--ink); color: var(--white);
             border: none; border-radius: 30px; font-size: 13px; font-weight: 500;
             cursor: pointer; font-family: 'DM Sans', sans-serif;
-<<<<<<< HEAD
             text-decoration: none; transition: opacity 0.2s; flex-shrink: 0;
-=======
-<<<<<<< HEAD
-            text-decoration: none; transition: opacity 0.2s; flex-shrink: 0;
-=======
-            text-decoration: none; transition: opacity 0.2s;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         }
         .zt-cart-btn:hover { opacity: 0.85; color: var(--white); }
         .zt-cart-count {
             background: var(--rose); color: var(--ink);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
             min-width: 18px; height: 18px; border-radius: 9px; padding: 0 4px;
             display: flex; align-items: center; justify-content: center;
             font-size: 11px; font-weight: 600;
@@ -314,14 +243,11 @@
         /* ══════════════════════════════════════
            FOOTER
         ══════════════════════════════════════ */
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             width: 18px; height: 18px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 11px; font-weight: 500;
         }
 
-<<<<<<< HEAD
         /* ── HAMBURGER BUTTON ── */
         .zt-nav-hamburger {
             display: none;
@@ -385,28 +311,15 @@
         }
 
         /* ── FOOTER ── */
-=======
-        /* ── FOOTER ── */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         .zt-footer {
             background: var(--ink); color: rgba(255,255,255,0.45);
             padding: 22px 40px; display: flex;
             justify-content: space-between; align-items: center;
-<<<<<<< HEAD
             font-size: 12px; margin-top: 40px;
-=======
-<<<<<<< HEAD
-            font-size: 12px; margin-top: 40px; flex-wrap: wrap; gap: 8px;
-=======
-            font-size: 12px; margin-top: 40px;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         }
         .zt-footer a { color: var(--rose); text-decoration: none; }
         .zt-footer a:hover { color: var(--rose-light); }
 
-<<<<<<< HEAD
         /* ══════════════════════
            RESPONSIVE NAVBAR
         ══════════════════════ */
@@ -416,51 +329,22 @@
             .zt-cart-btn { display: none; }
             .zt-nav-hamburger { display: flex; }
             .zt-footer { padding: 18px 20px; flex-direction: column; gap: 6px; text-align: center; }
-=======
-<<<<<<< HEAD
-        /* ══════════════════════════════════════
-           RESPONSIVE
-        ══════════════════════════════════════ */
-        @media (max-width: 768px) {
-            .zt-nav { padding: 0 16px; height: 56px; }
-            .zt-nav-links { display: none; }   /* Ocultar links en móvil */
-            .zt-cart-btn { display: none; }    /* Ocultar carrito en móvil (está en drawer) */
-            .zt-hamburger { display: flex; }   /* Mostrar hamburguesa */
-            .zt-footer { padding: 20px 16px; flex-direction: column; text-align: center; gap: 6px; }
-        }
-        @media (min-width: 769px) {
-            .zt-mobile-menu { display: none !important; } /* Nunca mostrar drawer en escritorio */
-=======
-        @media (max-width: 768px) {
-            .zt-nav { padding: 0 20px; }
-            .zt-nav-links { gap: 16px; }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         }
     </style>
     @stack('estilos')
 </head>
 <body>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 {{-- ══ NAVBAR ══ --}}
 <nav class="zt-nav">
     <a href="{{ route('web.home') }}" class="zt-nav-logo">ZT <span>|</span> SHOES</a>
 
     {{-- Links escritorio --}}
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 {{-- NAVBAR --}}
 <nav class="zt-nav">
     <a href="{{ route('web.home') }}" class="zt-nav-logo">ZT <span>|</span> SHOES</a>
 
-<<<<<<< HEAD
     {{-- Links desktop --}}
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     <ul class="zt-nav-links">
         <li><a href="{{ route('web.home') }}" class="{{ request()->routeIs('web.home') ? 'active' : '' }}">Inicio</a></li>
         <li><a href="{{ route('tienda') }}" class="{{ request()->routeIs('tienda') ? 'active' : '' }}">Tienda</a></li>
@@ -472,9 +356,6 @@
             <li class="zt-dropdown">
                 <a href="#" class="zt-dropdown-toggle">{{ auth()->user()->name }} ▾</a>
                 <div class="zt-dropdown-menu">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
                     <a href="{{ route('perfil.pedidos') }}"><i class="bi bi-bag"></i> Mis pedidos</a>
                     <a href="{{ route('perfil.edit') }}"><i class="bi bi-person"></i> Mi perfil</a>
                     @hasrole('admin')
@@ -486,8 +367,6 @@
                     <hr>
                     <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-box-arrow-right"></i> Cerrar sesión
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                     <a href="{{ route('perfil.pedidos') }}">Mis pedidos</a>
                     <a href="{{ route('perfil.edit') }}">Mi perfil</a>
                     @hasrole('admin')
@@ -499,10 +378,6 @@
                     <hr>
                     <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Cerrar sesión
-<<<<<<< HEAD
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                     </a>
                 </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
@@ -510,214 +385,19 @@
         @endguest
     </ul>
 
-<<<<<<< HEAD
     {{-- Cart desktop --}}
-=======
-<<<<<<< HEAD
-    {{-- Carrito escritorio --}}
-    @php
-        $carritoKey = auth()->check() ? 'carrito_' . auth()->id() : 'carrito_guest';
-        $carritoNav = session($carritoKey, []);
-        $carritoCount = array_sum(array_column($carritoNav, 'cantidad'));
-    @endphp
-    <a href="{{ route('carrito.mostrar') }}" class="zt-cart-btn">
-        <i class="bi-cart-fill"></i>
-        Carrito
-        <span class="zt-cart-count">{{ $carritoCount }}</span>
-    </a>
-
-    {{-- Hamburguesa móvil --}}
-    <button class="zt-hamburger" id="zt-hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-    </button>
-</nav>
-
-{{-- ══ MOBILE DRAWER ══ --}}
-<div class="zt-mobile-menu" id="zt-mobile-menu">
-    <div class="zt-mobile-overlay" id="zt-overlay"></div>
-    <div class="zt-mobile-drawer">
-
-        {{-- Header --}}
-        <div class="zt-drawer-head">
-            <a href="{{ route('web.home') }}" class="zt-drawer-logo">ZT <span>|</span> SHOES</a>
-            <button class="zt-drawer-close" id="zt-drawer-close">✕</button>
-        </div>
-
-        {{-- Info usuario --}}
-        @auth
-        <div class="zt-drawer-user">
-            <div class="zt-drawer-user-name">{{ auth()->user()->name }}</div>
-            <div class="zt-drawer-user-email">{{ auth()->user()->email }}</div>
-        </div>
-        @endauth
-
-        {{-- Links --}}
-        <div class="zt-drawer-links">
-            <span class="zt-drawer-section">Tienda</span>
-            <a href="{{ route('web.home') }}" class="zt-drawer-link {{ request()->routeIs('web.home') ? 'active' : '' }}">
-                <i class="bi bi-house"></i> Inicio
-            </a>
-            <a href="{{ route('tienda') }}" class="zt-drawer-link {{ request()->routeIs('tienda') ? 'active' : '' }}">
-                <i class="bi bi-shop"></i> Tienda
-            </a>
-
-            @guest
-                <div class="zt-drawer-sep"></div>
-                <span class="zt-drawer-section">Cuenta</span>
-                <a href="{{ route('registro') }}" class="zt-drawer-link">
-                    <i class="bi bi-person-plus"></i> Registrarse
-                </a>
-                <a href="{{ route('login') }}" class="zt-drawer-link">
-                    <i class="bi bi-box-arrow-in-right"></i> Iniciar sesión
-                </a>
-            @else
-                <div class="zt-drawer-sep"></div>
-                <span class="zt-drawer-section">Mi cuenta</span>
-                <a href="{{ route('perfil.pedidos') }}" class="zt-drawer-link {{ request()->routeIs('perfil.pedidos') ? 'active' : '' }}">
-                    <i class="bi bi-bag"></i> Mis pedidos
-                </a>
-                <a href="{{ route('perfil.edit') }}" class="zt-drawer-link {{ request()->routeIs('perfil.edit') ? 'active' : '' }}">
-                    <i class="bi bi-person"></i> Mi perfil
-                </a>
-                @hasrole('admin')
-                    <div class="zt-drawer-sep"></div>
-                    <span class="zt-drawer-section">Administración</span>
-                    <a href="{{ route('dashboard') }}" class="zt-drawer-link">
-                        <i class="bi bi-speedometer2"></i> Dashboard
-                    </a>
-                    <a href="{{ route('productos.index') }}" class="zt-drawer-link">
-                        <i class="bi bi-archive"></i> Productos
-                    </a>
-                    <a href="{{ route('usuarios.index') }}" class="zt-drawer-link">
-                        <i class="bi bi-people"></i> Usuarios
-                    </a>
-                @endhasrole
-                <div class="zt-drawer-sep"></div>
-                <a href="#" class="zt-drawer-link"
-                   onclick="event.preventDefault(); document.getElementById('logout-mobile').submit();"
-                   style="color:#dc2626;">
-                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
-                </a>
-                <form id="logout-mobile" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
-            @endguest
-        </div>
-
-        {{-- Footer del drawer: carrito --}}
-        <div class="zt-drawer-footer">
-            <a href="{{ route('carrito.mostrar') }}" class="zt-drawer-cart">
-                <div class="zt-drawer-cart-left">
-                    <i class="bi bi-cart-fill"></i>
-                    Mi carrito
-                </div>
-                <span class="zt-drawer-cart-badge">{{ $carritoCount }}</span>
-            </a>
-        </div>
-
-    </div>
-</div>
-
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
-    <a href="{{ route('carrito.mostrar') }}" class="zt-cart-btn">
-        <i class="bi-cart-fill"></i>
-        Pedido
-        <span class="zt-cart-count">
-            @php
-                $carritoKey = auth()->check() ? 'carrito_' . auth()->id() : 'carrito_guest';
-                $carritoNav = session($carritoKey, []);
-            @endphp
-            {{ array_sum(array_column($carritoNav, 'cantidad')) }}
-        </span>
-    </a>
-<<<<<<< HEAD
-
-    {{-- Hamburger + carrito mobile --}}
-    <div style="display:flex; align-items:center; gap:10px;">
-        {{-- Carrito visible en móvil siempre --}}
-        <a href="{{ route('carrito.mostrar') }}" class="zt-cart-btn" style="padding:8px 14px; gap:6px; font-size:12px;" id="zt-cart-mobile">
-            <i class="bi-cart-fill"></i>
-            <span class="zt-cart-count">{{ array_sum(array_column(session(auth()->check() ? 'carrito_'.auth()->id() : 'carrito_guest', []), 'cantidad')) }}</span>
-        </a>
-        <button class="zt-nav-hamburger" id="ztHamburger" aria-label="Menú">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</nav>
-
-{{-- MOBILE MENU --}}
-<div class="zt-mobile-menu" id="ztMobileMenu">
-
-    <a href="{{ route('web.home') }}" class="{{ request()->routeIs('web.home') ? 'active' : '' }}">Inicio</a>
-    <a href="{{ route('tienda') }}" class="{{ request()->routeIs('tienda') ? 'active' : '' }}">Tienda</a>
-
-    @guest
-        <span class="zt-mobile-section-label">Cuenta</span>
-        <a href="{{ route('registro') }}">Registrarse</a>
-        <a href="{{ route('login') }}">Iniciar sesión</a>
-    @else
-        <span class="zt-mobile-section-label">Mi cuenta — {{ auth()->user()->name }}</span>
-        <a href="{{ route('perfil.pedidos') }}">Mis pedidos</a>
-        <a href="{{ route('perfil.edit') }}">Mi perfil</a>
-        @hasrole('admin')
-            <span class="zt-mobile-section-label">Admin</span>
-            <a href="{{ route('dashboard') }}">Panel admin</a>
-            <a href="{{ route('productos.index') }}">Productos</a>
-            <a href="{{ route('usuarios.index') }}">Usuarios</a>
-        @endhasrole
-        <span class="zt-mobile-section-label" style="margin-top:20px;"></span>
-        <a href="#" class="text-danger-soft" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">Cerrar sesión</a>
-        <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display:none;">@csrf</form>
-    @endguest
-
-    <a href="{{ route('carrito.mostrar') }}" class="zt-mobile-cart">
-        <i class="bi-cart-fill"></i>
-        Ver pedido
-        <span class="zt-cart-count">{{ array_sum(array_column(session(auth()->check() ? 'carrito_'.auth()->id() : 'carrito_guest', []), 'cantidad')) }}</span>
-    </a>
-</div>
-
-=======
-</nav>
-
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 {{-- CONTENIDO --}}
 @yield('contenido')
 
 {{-- FOOTER --}}
 <footer class="zt-footer">
     <span>Copyright &copy; {{ date('Y') }} <a href="{{ route('web.home') }}">ZT_SHOES</a>. All rights reserved.</span>
-<<<<<<< HEAD
     <span>Anything you want</span>
-=======
-<<<<<<< HEAD
-    <span><a href="{{ route('tienda') }}">Tienda</a> · <a href="{{ route('carrito.mostrar') }}">Carrito</a></span>
-=======
-    <span>Anything you want</span>
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-<<<<<<< HEAD
 // Dropdown desktop
-=======
-<<<<<<< HEAD
-// ── Dropdown escritorio ──
-document.querySelectorAll('.zt-dropdown-toggle').forEach(function(toggle) {
-    toggle.addEventListener('click', function(e) {
-        e.preventDefault(); e.stopPropagation();
-=======
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
-document.querySelectorAll('.zt-dropdown-toggle').forEach(function(toggle) {
-    toggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-<<<<<<< HEAD
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         var menu = this.closest('.zt-dropdown').querySelector('.zt-dropdown-menu');
         document.querySelectorAll('.zt-dropdown-menu.open').forEach(function(m) {
             if (m !== menu) m.classList.remove('open');
@@ -726,7 +406,6 @@ document.querySelectorAll('.zt-dropdown-toggle').forEach(function(toggle) {
     });
 });
 document.addEventListener('click', function() {
-<<<<<<< HEAD
     document.querySelectorAll('.zt-dropdown-menu.open').forEach(function(m) {
         m.classList.remove('open');
     });
@@ -766,43 +445,6 @@ mobileMenu.querySelectorAll('a:not(.zt-mobile-cart)').forEach(function(link) {
         mobileMenu.classList.remove('open');
         document.body.style.overflow = '';
     });
-=======
-<<<<<<< HEAD
-    document.querySelectorAll('.zt-dropdown-menu.open').forEach(function(m) { m.classList.remove('open'); });
-});
-
-// ── Drawer móvil ──
-var hamburger  = document.getElementById('zt-hamburger');
-var mobileMenu = document.getElementById('zt-mobile-menu');
-var overlay    = document.getElementById('zt-overlay');
-var closeBtn   = document.getElementById('zt-drawer-close');
-
-function openDrawer() {
-    mobileMenu.classList.add('open');
-    hamburger.classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-function closeDrawer() {
-    mobileMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-hamburger.addEventListener('click', function() {
-    mobileMenu.classList.contains('open') ? closeDrawer() : openDrawer();
-});
-overlay.addEventListener('click', closeDrawer);
-closeBtn.addEventListener('click', closeDrawer);
-
-// Cerrar con tecla Escape
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeDrawer();
-=======
-    document.querySelectorAll('.zt-dropdown-menu.open').forEach(function(m) {
-        m.classList.remove('open');
-    });
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 });
 </script>
 @stack('scripts')

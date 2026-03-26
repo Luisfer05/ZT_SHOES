@@ -10,10 +10,6 @@
         --ink: #1a1212;
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .prf-layout {
         max-width: 900px;
         margin: 0 auto;
@@ -86,8 +82,6 @@
 
     /* ── Contenido principal ── */
     .prf-main {}
-<<<<<<< HEAD
-=======
 =======
     .prf-wrapper {
         max-width: 760px;
@@ -115,37 +109,19 @@
     .prf-header-info p {
         font-size: 13px; color: #999; margin: 0;
     }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 
     /* Alerta */
     .prf-alert {
         display: flex; align-items: center; gap: 10px;
         padding: 12px 16px; background: #f0fdf4;
         border: 1px solid #bbf7d0; border-radius: 10px;
-<<<<<<< HEAD
         color: #166534; font-size: 13px; margin-bottom: 20px;
-=======
-<<<<<<< HEAD
-        color: #166534; font-size: 13px; margin-bottom: 20px;
-=======
-        color: #166534; font-size: 13px; margin-bottom: 24px;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     }
 
     /* Cards */
     .prf-card {
         background: #fff; border: 0.5px solid #f0e0e2;
-<<<<<<< HEAD
         border-radius: 16px; overflow: hidden; margin-bottom: 16px;
-=======
-<<<<<<< HEAD
-        border-radius: 16px; overflow: hidden; margin-bottom: 16px;
-=======
-        border-radius: 16px; overflow: hidden; margin-bottom: 20px;
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     }
     .prf-card-header {
         padding: 16px 20px; border-bottom: 0.5px solid #f5eaea;
@@ -155,10 +131,6 @@
         width: 32px; height: 32px; border-radius: 8px;
         background: var(--rose-light); display: flex;
         align-items: center; justify-content: center;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         flex-shrink: 0;
     }
     .prf-card-title { font-size: 14px; font-weight: 600; color: var(--ink); margin: 0; }
@@ -166,8 +138,6 @@
     .prf-card-body { padding: 20px; }
 
     /* Fields */
-<<<<<<< HEAD
-=======
 =======
     }
     .prf-card-title {
@@ -179,8 +149,6 @@
     .prf-card-body { padding: 20px; }
 
     /* Form fields */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .prf-field { margin-bottom: 18px; }
     .prf-label {
         display: block; font-size: 12px; font-weight: 500;
@@ -202,17 +170,11 @@
     }
     .prf-input.is-invalid { border-color: #fca5a5; }
     .prf-error { font-size: 12px; color: #dc2626; margin-top: 5px; display: block; }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .prf-hint { font-size: 11px; color: #bbb; margin-top: 5px; display: flex; align-items: center; gap: 4px; }
 
     .prf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 600px) { .prf-grid { grid-template-columns: 1fr; } }
 
-<<<<<<< HEAD
-=======
 =======
 
     /* Hint */
@@ -225,8 +187,6 @@
     @media (max-width: 600px) { .prf-grid { grid-template-columns: 1fr; } }
 
     /* Password toggle */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .prf-input-wrap { position: relative; }
     .prf-eye {
         position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
@@ -236,13 +196,7 @@
     .prf-eye:hover { color: var(--rose-dark); }
     .prf-input-wrap .prf-input { padding-right: 40px; }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     /* Actions */
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     .prf-actions {
         display: flex; justify-content: flex-end; gap: 10px;
         padding-top: 8px;
@@ -252,14 +206,7 @@
         border: 1.5px solid #e8e0e0; border-radius: 10px;
         font-size: 13px; font-weight: 500; cursor: pointer;
         font-family: inherit; transition: all 0.15s;
-<<<<<<< HEAD
         text-decoration: none; display: inline-flex; align-items: center;
-=======
-<<<<<<< HEAD
-        text-decoration: none; display: inline-flex; align-items: center;
-=======
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     }
     .prf-btn-cancel:hover { background: #f5f0f0; color: var(--ink); }
     .prf-btn-save {
@@ -270,10 +217,6 @@
         display: flex; align-items: center; gap: 7px;
     }
     .prf-btn-save:hover { opacity: 0.85; }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 
     /* Info badge */
     .prf-role-badge {
@@ -282,18 +225,12 @@
         color: var(--rose-dark); border-radius: 20px;
         font-size: 11px; font-weight: 500; margin-top: 8px;
     }
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 </style>
 @endpush
 
 @section('contenido')
 <div class="app-content">
     <div class="container-fluid">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         <div class="prf-layout">
 
             {{-- ── SIDEBAR DE CUENTA ── --}}
@@ -478,8 +415,6 @@
                 </form>
             </div>
 
-<<<<<<< HEAD
-=======
 =======
         <div class="prf-wrapper">
 
@@ -629,8 +564,6 @@
                 </div>
 
             </form>
->>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
->>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         </div>
     </div>
 </div>

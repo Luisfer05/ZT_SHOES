@@ -1,525 +1,377 @@
-@extends('web.app')
-@section('titulo', 'ZT|SHOES — Tienda')
+@extends('plantilla.app')
 
 @push('estilos')
 <style>
-    /* ══════════════════════════════════════
-       BANNER SUPERIOR
-    ══════════════════════════════════════ */
-    .zt-shop-banner {
-        position: relative;
-        height: 280px;
-        background: linear-gradient(135deg, #f5dde0 0%, #e8b4b8 45%, #d4878f 100%);
-        display: flex; align-items: center;
-        overflow: hidden;
+    :root {
+        --rose: #e8b4b8; --rose-light: #f5dde0;
+        --rose-dark: #c47a82; --nude: #f0e6e0;
+        --ink: #1a1212;
+    }
+    .pr-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+    .pr-title { font-size:22px; font-weight:600; color:var(--ink); margin:0; }
+    .pr-subtitle { font-size:13px; color:#999; margin-top:2px; }
+
+    .pr-btn-new {
+        display:inline-flex; align-items:center; gap:7px;
+        padding:10px 20px; background:var(--ink); color:#fff;
+        border:none; border-radius:10px; font-size:13px; font-weight:500;
+        cursor:pointer; text-decoration:none; transition:opacity 0.2s;
+    }
+    .pr-btn-new:hover { opacity:0.85; color:#fff; }
+
+    .pr-toolbar {
+        display:flex; gap:10px; align-items:center;
+        background:#fff; border:0.5px solid #f0e0e2;
+        border-radius:12px; padding:14px 16px; margin-bottom:16px;
+    }
+    .pr-search-wrap { flex:1; position:relative; }
+    .pr-search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#bbb; pointer-events:none; }
+    .pr-search-input {
+        width:100%; padding:9px 12px 9px 36px;
+        border:1.5px solid #f0dde0; border-radius:8px;
+        font-size:13px; color:var(--ink); outline:none;
+        background:#fdf8f8; transition:border-color 0.2s; font-family:inherit;
+    }
+    .pr-search-input:focus { border-color:var(--rose); }
+    .pr-search-btn {
+        padding:9px 20px; background:var(--ink); color:#fff;
+        border:none; border-radius:8px; font-size:13px;
+        font-weight:500; cursor:pointer; white-space:nowrap; font-family:inherit;
     }
 
-    .zt-shop-banner-bg {
-        position: absolute;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 220px; font-weight: 600;
-        color: rgba(255,255,255,0.14);
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        white-space: nowrap;
-        pointer-events: none; user-select: none;
+    .pr-alert {
+        display:flex; align-items:center; gap:10px;
+        padding:12px 16px; background:#f0fdf4;
+        border:1px solid #bbf7d0; border-radius:10px;
+        color:#166534; font-size:13px; margin-bottom:16px;
     }
 
-    .zt-shop-banner-content {
-        position: relative; z-index: 2;
-        padding: 0 64px;
-        animation: ztFadeUp 0.6s ease both;
+    .pr-table-card {
+        background:#fff; border:0.5px solid #f0e0e2;
+        border-radius:14px; overflow:hidden;
+    }
+    .pr-table { width:100%; border-collapse:collapse; }
+    .pr-table thead tr { border-bottom:0.5px solid #f0e0e2; background:#fdf8f8; }
+    .pr-table th {
+        padding:11px 16px; font-size:11px; font-weight:500; color:#aaa;
+        text-transform:uppercase; letter-spacing:0.06em; text-align:left; white-space:nowrap;
+    }
+    .pr-table td {
+        padding:13px 16px; font-size:13px; color:var(--ink);
+        border-bottom:0.5px solid #f5eaea; vertical-align:middle;
+    }
+    .pr-table tbody tr:last-child td { border-bottom:none; }
+    .pr-table tbody tr:hover td { background:#fdf8f8; }
+
+    .pr-product-img {
+        width:52px; height:52px; border-radius:10px;
+        object-fit:cover; border:0.5px solid #f0e0e2;
+    }
+    .pr-no-img {
+        width:52px; height:52px; border-radius:10px;
+        background:var(--rose-light); display:flex;
+        align-items:center; justify-content:center;
+        font-size:22px;
     }
 
-    @keyframes ztFadeUp {
-        from { opacity: 0; transform: translateY(18px); }
-        to   { opacity: 1; transform: translateY(0); }
+    .pr-code {
+        display:inline-block; padding:3px 10px;
+        background:#f5f0ff; color:#7c3aed;
+        border-radius:6px; font-size:11px; font-weight:500;
+        font-family:monospace; letter-spacing:0.04em;
+    }
+    .pr-price { font-weight:600; color:var(--ink); }
+
+    .pr-btn-edit {
+        display:inline-flex; align-items:center; gap:5px;
+        padding:6px 12px; background:#eff6ff; color:#1d4ed8;
+        border:1px solid #bfdbfe; border-radius:8px;
+        font-size:12px; font-weight:500; cursor:pointer;
+        text-decoration:none; transition:all 0.15s; margin-right:6px;
+    }
+    .pr-btn-edit:hover { background:#dbeafe; color:#1d4ed8; }
+    .pr-btn-delete {
+        display:inline-flex; align-items:center; gap:5px;
+        padding:6px 12px; background:#fef2f2; color:#dc2626;
+        border:1px solid #fecaca; border-radius:8px;
+        font-size:12px; font-weight:500; cursor:pointer;
+        transition:all 0.15s;
+    }
+    .pr-btn-delete:hover { background:#fee2e2; }
+
+    /* ── Botón colección ── */
+    .pr-btn-coleccion {
+        display:inline-flex; align-items:center; gap:5px;
+        padding:6px 12px; border-radius:8px;
+        font-size:12px; font-weight:500; cursor:pointer;
+        border:1px solid #f0dde0; background:#fdf8f8; color:#999;
+        transition:all 0.15s; margin-right:6px;
+    }
+    .pr-btn-coleccion:hover { border-color:var(--rose-dark); color:var(--rose-dark); background:#fff5f5; }
+    .pr-btn-coleccion.activo {
+        background:#fff7e6; color:#b45309;
+        border-color:#fcd34d;
+    }
+    .pr-btn-coleccion.activo:hover { background:#fef3c7; }
+    .pr-badge-coleccion {
+        display:inline-flex; align-items:center; gap:4px;
+        padding:3px 9px; background:#fff7e6; color:#b45309;
+        border:1px solid #fcd34d; border-radius:20px;
+        font-size:11px; font-weight:600;
     }
 
-    .zt-shop-eyebrow {
-        font-size: 11px; font-weight: 500;
-        letter-spacing: 0.22em; text-transform: uppercase;
-        color: #c47a82; margin-bottom: 12px;
+=======
+    .pr-empty { padding:56px 20px; text-align:center; }
+    .pr-empty-icon {
+        width:52px; height:52px; background:#fdf0f0; border-radius:50%;
+        margin:0 auto 14px; display:flex; align-items:center; justify-content:center;
     }
 
-    .zt-shop-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 56px; font-weight: 300;
-        line-height: 1.05; color: #1a1212;
+    .pr-footer {
+        padding:14px 16px; border-top:0.5px solid #f5eaea;
+        display:flex; justify-content:space-between; align-items:center;
     }
+    .pr-count { font-size:12px; color:#aaa; }
+    .pr-footer .pagination { margin:0; }
+    .pr-footer .page-link {
+        border-radius:8px !important; border-color:#f0e0e2;
+        color:#888; font-size:12px; padding:5px 12px;
+    }
+    .pr-footer .page-item.active .page-link { background:var(--ink); border-color:var(--ink); color:#fff; }
 
-    .zt-shop-title em { font-style: italic; color: #c47a82; }
-
-    .zt-shop-sub {
-        font-size: 13px; color: #7a6060;
-        margin-top: 12px; max-width: 380px; line-height: 1.7;
+    /* Modal */
+    .pr-modal .modal-content { border:none; border-radius:16px; overflow:hidden; }
+    .pr-modal .modal-header { background:#fff; border-bottom:0.5px solid #f5eaea; padding:18px 20px; }
+    .pr-modal .modal-title { font-size:15px; font-weight:600; color:var(--ink); }
+    .pr-modal .modal-body { padding:20px; }
+    .pr-modal .modal-footer { border-top:0.5px solid #f5eaea; padding:14px 20px; }
+    .pr-modal-warn {
+        display:flex; align-items:center; gap:12px;
+        padding:14px 16px; background:#fef2f2;
+        border:1px solid #fecaca; border-radius:10px;
+        font-size:13px; color:#991b1b;
     }
-
-    /* Breadcrumb */
-    .zt-breadcrumb {
-        padding: 14px 64px;
-        background: #fff;
-        border-bottom: 0.5px solid #f0e0e2;
-        font-size: 12px; color: #7a6060;
-        display: flex; align-items: center; gap: 8px;
+    .pr-modal-icon { width:36px; height:36px; border-radius:50%; background:#fee2e2; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .pr-modal-cancel {
+        padding:9px 18px; background:transparent; color:#888;
+        border:0.5px solid #ddd; border-radius:8px; font-size:13px; cursor:pointer; font-family:inherit;
     }
-    .zt-breadcrumb a { color: #7a6060; text-decoration: none; transition: color 0.2s; }
-    .zt-breadcrumb a:hover { color: #1a1212; }
-    .zt-breadcrumb span { color: #c47a82; }
-
-    /* ══════════════════════════════════════
-       LAYOUT PRINCIPAL
-    ══════════════════════════════════════ */
-    .zt-shop-layout {
-        display: grid;
-        grid-template-columns: 240px 1fr;
-        min-height: 60vh;
-        background: #fdf8f8;
+    .pr-modal-confirm {
+        padding:9px 20px; background:#dc2626; color:#fff;
+        border:none; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit;
     }
-
-    /* ══════════════════════════════════════
-       SIDEBAR FILTROS
-    ══════════════════════════════════════ */
-    .zt-sidebar {
-        background: #fff;
-        border-right: 0.5px solid #f0e0e2;
-        padding: 32px 24px;
-        position: sticky;
-        top: 64px;
-        height: calc(100vh - 64px);
-        overflow-y: auto;
-    }
-
-    .zt-sidebar-title {
-        font-size: 10px; font-weight: 500;
-        letter-spacing: 0.18em; text-transform: uppercase;
-        color: #c47a82; margin-bottom: 20px;
-    }
-
-    .zt-filter-group { margin-bottom: 28px; }
-
-    .zt-filter-label {
-        font-size: 12px; font-weight: 500;
-        color: #1a1212; margin-bottom: 12px;
-        letter-spacing: 0.03em;
-    }
-
-    /* Input búsqueda en sidebar */
-    .zt-sidebar-search {
-        display: flex; align-items: center; gap: 8px;
-        background: #fdf8f8; border: 1.5px solid #f0dde0;
-        border-radius: 10px; padding: 0 12px; height: 40px;
-        transition: border-color 0.2s;
-    }
-    .zt-sidebar-search:focus-within { border-color: #e8b4b8; }
-    .zt-sidebar-search svg { color: #b08888; flex-shrink: 0; }
-    .zt-sidebar-search input {
-        background: transparent; border: none; outline: none;
-        font-size: 13px; color: #1a1212; width: 100%;
-        font-family: 'DM Sans', sans-serif;
-    }
-    .zt-sidebar-search input::placeholder { color: #b08888; }
-
-    /* Select ordenar */
-    .zt-sidebar-select {
-        width: 100%; padding: 10px 12px;
-        border: 1.5px solid #f0dde0; border-radius: 10px;
-        font-size: 13px; font-family: 'DM Sans', sans-serif;
-        color: #1a1212; background: #fdf8f8;
-        outline: none; cursor: pointer;
-        transition: border-color 0.2s; appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23b08888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 12px center;
-        padding-right: 32px;
-    }
-    .zt-sidebar-select:focus { border-color: #e8b4b8; }
-
-    /* Botón aplicar */
-    .zt-sidebar-btn {
-        width: 100%; padding: 11px;
-        background: #1a1212; color: #fff;
-        border: none; border-radius: 10px;
-        font-size: 13px; font-weight: 500;
-        font-family: 'DM Sans', sans-serif;
-        cursor: pointer; transition: opacity 0.2s;
-        letter-spacing: 0.04em; margin-top: 4px;
-    }
-    .zt-sidebar-btn:hover { opacity: 0.82; }
-
-    /* Limpiar filtros */
-    .zt-sidebar-clear {
-        display: block; text-align: center;
-        margin-top: 10px; font-size: 12px;
-        color: #b08888; text-decoration: none;
-        transition: color 0.2s;
-    }
-    .zt-sidebar-clear:hover { color: #c47a82; }
-
-    .zt-sidebar-divider {
-        border: none; border-top: 0.5px solid #f0e0e2;
-        margin: 24px 0;
-    }
-
-    /* Info rápida sidebar */
-    .zt-sidebar-info {
-        font-size: 12px; color: #7a6060; line-height: 1.7;
-    }
-    .zt-sidebar-info strong { color: #1a1212; font-weight: 500; }
-
-    /* ══════════════════════════════════════
-       ÁREA DE PRODUCTOS
-    ══════════════════════════════════════ */
-    .zt-shop-main { padding: 32px 36px; }
-
-    /* Barra superior productos */
-    .zt-shop-topbar {
-        display: flex; align-items: center;
-        justify-content: space-between;
-        margin-bottom: 24px;
-        padding-bottom: 16px;
-        border-bottom: 0.5px solid #f0e0e2;
-    }
-
-    .zt-shop-count {
-        font-size: 13px; color: #7a6060;
-    }
-    .zt-shop-count strong { color: #1a1212; font-weight: 500; }
-
-    /* Pill de filtro activo */
-    .zt-filter-pill {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: #f5dde0; border-radius: 20px;
-        padding: 4px 12px; font-size: 12px; color: #c47a82;
-        font-weight: 500;
-    }
-    .zt-filter-pill a {
-        color: #c47a82; text-decoration: none;
-        font-size: 14px; line-height: 1;
-    }
-    .zt-filter-pill a:hover { color: #1a1212; }
-
-    /* Grid productos */
-    .zt-products-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    /* Card */
-    .zt-product-card {
-        background: #fff; border-radius: 16px; overflow: hidden;
-        border: 0.5px solid #f0e0e2;
-        transition: transform 0.22s, box-shadow 0.22s;
-        text-decoration: none; color: inherit; display: flex;
-        flex-direction: column;
-    }
-    .zt-product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 14px 36px rgba(196,122,130,0.15);
-        color: inherit;
-    }
-
-    .zt-product-img {
-        height: 220px; overflow: hidden;
-        background: linear-gradient(135deg, #f5dde0, #e8b4b8);
-        display: flex; align-items: center; justify-content: center;
-        position: relative;
-    }
-    .zt-product-img img {
-        width: 100%; height: 100%;
-        object-fit: cover; transition: transform 0.45s ease;
-    }
-    .zt-product-card:hover .zt-product-img img { transform: scale(1.06); }
-
-    /* Etiqueta "Nuevo" */
-    .zt-product-badge {
-        position: absolute; top: 12px; left: 12px;
-        background: #1a1212; color: #fff;
-        font-size: 10px; font-weight: 500;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        padding: 4px 10px; border-radius: 20px;
-    }
-
-    .zt-product-info { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
-
-    .zt-product-name {
-        font-size: 14px; font-weight: 500;
-        color: #1a1212; margin-bottom: 4px;
-        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-
-    .zt-product-footer {
-        display: flex; align-items: center;
-        justify-content: space-between;
-        margin-top: auto; padding-top: 12px;
-    }
-
-    .zt-product-price {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 22px; font-weight: 600; color: #1a1212;
-    }
-
-    .zt-card-actions { display: flex; gap: 6px; align-items: center; }
-
-    .zt-ver-btn {
-        padding: 7px 16px; background: transparent; color: #1a1212;
-        border: 1.5px solid rgba(26,18,18,0.2); border-radius: 20px;
-        font-size: 12px; font-weight: 500; cursor: pointer;
-        font-family: 'DM Sans', sans-serif; transition: all 0.15s;
-        text-decoration: none; display: inline-block; white-space: nowrap;
-    }
-    .zt-ver-btn:hover { background: #1a1212; color: #fff; border-color: #1a1212; }
-
-    .zt-add-btn {
-        width: 34px; height: 34px; background: #1a1212; color: #fff;
-        border: none; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        cursor: pointer; font-size: 22px; line-height: 1;
-        transition: background 0.2s; flex-shrink: 0;
-    }
-    .zt-add-btn:hover { background: #c47a82; }
-
-    /* Empty state */
-    .zt-empty {
-        grid-column: 1/-1;
-        text-align: center; padding: 80px 20px;
-    }
-    .zt-empty-icon { font-size: 56px; margin-bottom: 16px; }
-    .zt-empty h3 {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 28px; font-weight: 300; color: #1a1212; margin-bottom: 8px;
-    }
-    .zt-empty p { font-size: 14px; color: #7a6060; margin-bottom: 24px; }
-
-    /* ══════════════════════════════════════
-       PAGINACIÓN
-    ══════════════════════════════════════ */
-    .zt-pagination {
-        margin-top: 40px;
-        display: flex; justify-content: center;
-    }
-    .zt-pagination .pagination { display: flex; gap: 4px; list-style: none; padding: 0; margin: 0; }
-    .zt-pagination .page-link {
-        border: 1.5px solid #f0dde0 !important;
-        border-radius: 10px !important;
-        color: #7a6060 !important;
-        font-size: 13px; padding: 8px 16px;
-        font-family: 'DM Sans', sans-serif;
-        background: #fff !important;
-        transition: all 0.15s;
-    }
-    .zt-pagination .page-link:hover {
-        background: #f0e6e0 !important;
-        color: #1a1212 !important;
-        border-color: #e8b4b8 !important;
-    }
-    .zt-pagination .page-item.active .page-link {
-        background: #1a1212 !important;
-        border-color: #1a1212 !important;
-        color: #fff !important;
-    }
-    .zt-pagination .page-item.disabled .page-link { opacity: 0.4; }
-
-    /* ══════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════ */
-    @media (max-width: 1100px) {
-        .zt-products-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 900px) {
-        .zt-shop-layout { grid-template-columns: 1fr; }
-        .zt-sidebar {
-            position: static; height: auto;
-            border-right: none; border-bottom: 0.5px solid #f0e0e2;
-            padding: 20px 24px;
-        }
-        .zt-sidebar-form-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-        }
-        .zt-shop-banner-content { padding: 0 24px; }
-        .zt-shop-title { font-size: 38px; }
-        .zt-breadcrumb { padding: 14px 24px; }
-        .zt-shop-main { padding: 24px 20px; }
-    }
-
-    @media (max-width: 560px) {
-        .zt-products-grid { grid-template-columns: repeat(2, 1fr); }
-        .zt-shop-banner { height: 200px; }
-        .zt-shop-title { font-size: 30px; }
-        .zt-sidebar-form-row { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 360px) {
-        .zt-products-grid { grid-template-columns: 1fr; }
-    }
+    .pr-modal-confirm:hover { opacity:0.85; }
 </style>
 @endpush
 
 @section('contenido')
+<div class="app-content">
+    <div class="container-fluid">
 
-{{-- ══ BANNER ══ --}}
-<section class="zt-shop-banner">
-    <div class="zt-shop-banner-bg">SHOP</div>
-    <div class="zt-shop-banner-content">
-        <p class="zt-shop-eyebrow">Colección completa</p>
-        <h1 class="zt-shop-title">Nuestra <em>tienda</em></h1>
-        <p class="zt-shop-sub">Encuentra el par perfecto entre todos nuestros modelos disponibles.</p>
-    </div>
-</section>
+        {{-- HEADER --}}
+        <div class="pr-header">
+            <div>
+                <h1 class="pr-title">Productos</h1>
+                <p class="pr-subtitle">Gestión del catálogo de calzado</p>
+            </div>
+            @can('producto-create')
+                <a href="{{ route('productos.create') }}" class="pr-btn-new">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Nuevo producto
+                </a>
+            @endcan
+        </div>
 
-{{-- Breadcrumb --}}
-<div class="zt-breadcrumb">
-    <a href="{{ route('web.home') }}">Inicio</a>
-    <span>›</span>
-    <span style="color:#1a1212; font-weight:500;">Tienda</span>
-    @if(request('search'))
-        <span>›</span>
-        <span style="color:#1a1212;">"{{ request('search') }}"</span>
-    @endif
-</div>
-
-{{-- ══ LAYOUT ══ --}}
-<div class="zt-shop-layout">
-
-    {{-- ── SIDEBAR ── --}}
-    <aside class="zt-sidebar">
-        <p class="zt-sidebar-title">Filtros</p>
-
-        <form method="GET" action="{{ route('tienda') }}" id="filterForm">
-
-            {{-- Búsqueda --}}
-            <div class="zt-filter-group">
-                <p class="zt-filter-label">Buscar</p>
-                <div class="zt-sidebar-search">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        {{-- TOOLBAR --}}
+        <form action="{{ route('productos.index') }}" method="GET">
+            <div class="pr-toolbar">
+                <div class="pr-search-wrap">
+                    <svg class="pr-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
                     </svg>
-                    <input
-                        type="text"
-                        name="search"
-                        placeholder="Nombre del producto..."
-                        value="{{ request('search') }}"
-                    >
+                    <input class="pr-search-input" type="text" name="texto"
+                           placeholder="Buscar por nombre o código..." value="{{ $texto }}">
                 </div>
+                <button type="submit" class="pr-search-btn">Buscar</button>
             </div>
-
-            <hr class="zt-sidebar-divider" style="margin-top:0;">
-
-            {{-- Ordenar --}}
-            <div class="zt-filter-group">
-                <p class="zt-filter-label">Ordenar por precio</p>
-                <select class="zt-sidebar-select" name="sort">
-                    <option value=""          {{ !request('sort')              ? 'selected' : '' }}>Por defecto</option>
-                    <option value="priceAsc"  {{ request('sort') === 'priceAsc'  ? 'selected' : '' }}>Menor a mayor</option>
-                    <option value="priceDesc" {{ request('sort') === 'priceDesc' ? 'selected' : '' }}>Mayor a menor</option>
-                </select>
-            </div>
-
-            <button type="submit" class="zt-sidebar-btn">Aplicar filtros</button>
-
-            @if(request('search') || request('sort'))
-                <a href="{{ route('tienda') }}" class="zt-sidebar-clear">✕ Limpiar filtros</a>
-            @endif
-
         </form>
 
-        <hr class="zt-sidebar-divider">
+        {{-- ALERTA --}}
+        @if(Session::has('mensaje'))
+            <div class="pr-alert">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {{ Session::get('mensaje') }}
+            </div>
+        @endif
 
-        <div class="zt-sidebar-info">
-            <p style="margin-bottom:10px;">
-                <strong>Envío gratis</strong> en pedidos mayores a $150.
-            </p>
-            <p style="margin-bottom:10px;">
-                <strong>Devoluciones</strong> dentro de los 30 días.
-            </p>
-            <p>
-                <strong>Pago seguro</strong> con múltiples métodos disponibles.
-            </p>
-        </div>
-    </aside>
+        {{-- TABLA --}}
+        <div class="pr-table-card">
+            <table class="pr-table">
+                <thead>
+                    <tr>
+                        <th>Opciones</th>
+                        <th>Colección</th>
+                        <th>#ID</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(count($registros) <= 0)
+                        <tr>
+                            <td colspan="7">
+                                <div class="pr-empty">
+                                    <div class="pr-empty-icon">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c47a82" stroke-width="1.5">
+                                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                        </svg>
+                                    </div>
+                                    <p style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Sin productos</p>
+                                    <p style="font-size:12px;color:#999;">No hay registros que coincidan con la búsqueda</p>
+                                </div>
+                            </td>
+                        </tr>
+                    @else
+                        @foreach($registros as $reg)
+                            <tr>
+                                {{-- Acciones --}}
+                                <td>
+                                    @can('producto-edit')
+                                        <a href="{{ route('productos.edit', $reg->id) }}" class="pr-btn-edit">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                            </svg>
+                                            Editar
+                                        </a>
+                                    @endcan
+                                    @can('producto-delete')
+                                        <button class="pr-btn-delete" data-bs-toggle="modal"
+                                                data-bs-target="#modal-eliminar-{{ $reg->id }}">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="3 6 5 6 21 6"/>
+                                                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                                                <path d="M10 11v6M14 11v6"/>
+                                                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                                            </svg>
+                                            Eliminar
+                                        </button>
+                                    @endcan
+                                </td>
 
-    {{-- ── PRODUCTOS ── --}}
-    <main class="zt-shop-main">
+                                {{-- Toggle colección --}}
+                                <td>
+                                    @can('producto-edit')
+                                        @if($reg->imagen)
+                                            <form action="{{ route('productos.coleccion', $reg->id) }}" method="POST" style="display:inline;">
+                                                @csrf @method('PATCH')
+                                                <button type="submit" class="pr-btn-coleccion {{ $reg->en_coleccion ? 'activo' : '' }}"
+                                                        title="{{ $reg->en_coleccion ? 'Quitar del home' : 'Mostrar en el home' }}">
+                                                    <svg width="13" height="13" viewBox="0 0 24 24"
+                                                         fill="{{ $reg->en_coleccion ? '#b45309' : 'none' }}"
+                                                         stroke="{{ $reg->en_coleccion ? '#b45309' : 'currentColor' }}"
+                                                         stroke-width="2">
+                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                                    </svg>
+                                                    {{ $reg->en_coleccion ? 'En home' : 'Añadir' }}
+                                                </button>
+                                            </form>
+                                        @else
+                                            <span style="font-size:11px;color:#ccc;" title="Sube una imagen para activar esta opción">Sin imagen</span>
+                                        @endif
+                                    @else
+                                        @if($reg->en_coleccion)
+                                            <span class="pr-badge-coleccion">
+                                                <svg width="11" height="11" viewBox="0 0 24 24" fill="#b45309" stroke="#b45309" stroke-width="2">
+                                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                                </svg>
+                                                En home
+                                            </span>
+                                        @endif
+                                    @endcan
+                                </td>
 
-        {{-- Topbar --}}
-        <div class="zt-shop-topbar">
-            <p class="zt-shop-count">
-                <strong>{{ $productos->total() }}</strong>
-                {{ $productos->total() === 1 ? 'producto' : 'productos' }} encontrados
-            </p>
+=======
+                                <td style="font-weight:500; color:#888;">#{{ $reg->id }}</td>
+                                <td><span class="pr-code">{{ $reg->codigo }}</span></td>
+                                <td style="font-weight:500;">{{ $reg->nombre }}</td>
+                                <td class="pr-price">{{ moneda($reg->precio) }}</td>
+                                <td>
+                                    @if($reg->imagen)
+                                        <img src="{{ asset('uploads/productos/' . $reg->imagen) }}"
+                                             alt="{{ $reg->nombre }}" class="pr-product-img">
+                                    @else
+                                        <div class="pr-no-img">👟</div>
+                                    @endif
+                                </td>
+                            </tr>
 
-            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-                @if(request('search'))
-                    <span class="zt-filter-pill">
-                        "{{ request('search') }}"
-                        <a href="{{ route('tienda', array_merge(request()->except('search'), [])) }}">×</a>
-                    </span>
-                @endif
-                @if(request('sort'))
-                    <span class="zt-filter-pill">
-                        {{ request('sort') === 'priceAsc' ? 'Precio ↑' : 'Precio ↓' }}
-                        <a href="{{ route('tienda', array_merge(request()->except('sort'), [])) }}">×</a>
-                    </span>
-                @endif
+                            {{-- Modal eliminar --}}
+                            @can('producto-delete')
+                            <div class="modal fade pr-modal" id="modal-eliminar-{{ $reg->id }}" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <form action="{{ route('productos.destroy', $reg->id) }}" method="POST">
+                                            @csrf @method('DELETE')
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Eliminar producto</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="pr-modal-warn">
+                                                    <div class="pr-modal-icon">
+                                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2">
+                                                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                                            <line x1="12" y1="9" x2="12" y2="13"/>
+                                                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p style="font-weight:600;margin:0 0 3px;">¿Eliminar <strong>{{ $reg->nombre }}</strong>?</p>
+                                                        <p style="font-size:12px;margin:0;opacity:0.8;">Esta acción no se puede deshacer. Se eliminará también la imagen asociada.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="pr-modal-cancel" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="pr-modal-confirm">
+                                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:5px;">
+                                                        <polyline points="3 6 5 6 21 6"/>
+                                                        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                                                    </svg>
+                                                    Sí, eliminar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @endcan
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+
+            <div class="pr-footer">
+                <span class="pr-count">{{ $registros->total() }} productos encontrados</span>
+                {{ $registros->appends(['texto' => $texto])->links() }}
             </div>
         </div>
 
-        {{-- Grid --}}
-        <div class="zt-products-grid" id="productos">
-            @forelse($productos as $i => $producto)
-                <div class="zt-product-card">
-                    <div class="zt-product-img">
-                        @if($producto->imagen)
-                            <img
-                                src="{{ asset('uploads/productos/' . $producto->imagen) }}"
-                                alt="{{ $producto->nombre }}"
-                                loading="lazy"
-                            >
-                        @else
-                            <span style="font-size:72px;">👟</span>
-                        @endif
-                        @if($i < 3)
-                            <span class="zt-product-badge">Nuevo</span>
-                        @endif
-                    </div>
-                    <div class="zt-product-info">
-                        <p class="zt-product-name" title="{{ $producto->nombre }}">{{ $producto->nombre }}</p>
-                        <div class="zt-product-footer">
-                            <span class="zt-product-price">{{ moneda($producto->precio) }}</span>
-                            <div class="zt-card-actions">
-                                <a href="{{ route('web.show', $producto->id) }}" class="zt-ver-btn">Ver</a>
-                                <form action="{{ route('carrito.agregar') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="id"     value="{{ $producto->id }}">
-                                    <input type="hidden" name="nombre" value="{{ $producto->nombre }}">
-                                    <input type="hidden" name="precio" value="{{ $producto->precio }}">
-                                    <input type="hidden" name="imagen" value="{{ $producto->imagen }}">
-                                    <button type="submit" class="zt-add-btn" title="Agregar al carrito">+</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @empty
-                <div class="zt-empty">
-                    <div class="zt-empty-icon">👟</div>
-                    <h3>Sin resultados</h3>
-                    <p>No encontramos productos con ese criterio de búsqueda.</p>
-                    <a href="{{ route('tienda') }}" class="zt-ver-btn" style="font-size:13px; padding:10px 24px;">
-                        Ver todos los productos
-                    </a>
-                </div>
-            @endforelse
-        </div>
-
-        {{-- Paginación --}}
-        <div class="zt-pagination">
-            {{ $productos->appends(['search' => request('search'), 'sort' => request('sort')])->links() }}
-        </div>
-
-    </main>
+    </div>
 </div>
-
 @endsection
+
+@push('scripts')
+<script>
+    document.getElementById('mnuAlmacen').classList.add('menu-open');
+    document.getElementById('itemProducto').classList.add('active');
+</script>
+@endpush
