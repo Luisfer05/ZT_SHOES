@@ -10,7 +10,7 @@
                 <li class="nav-item"><a class="nav-link" href="#">Categoria</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Tienda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Registrarse</a></li>
-                
+
                 <li class="nav-item dropdown">
                     @auth
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -32,12 +32,6 @@
                                 </button>
                             </form>
                         </li>
-=======
-                        <li><a class="dropdown-item" href="{{route('perfil.pedidos')}}">Mis pedidos</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="{{route('perfil.edit')}}">Mi perfil</a></li>
                     </ul>
                     @else
                         <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
@@ -55,14 +49,6 @@
                 Carrito
                 <span class="badge bg-dark text-white ms-1 rounded-pill">
                     {{ $carritoCount }}
-=======
-
-            </ul>
-            <a href="{{route('carrito.mostrar')}}" class="btn btn-outline-dark">
-                <i class="bi-cart-fill me-1"></i>
-                Pedido
-                <span class="badge bg-dark text-white ms-1 rounded-pill">
-                {{ session('carrito') ? array_sum(array_column(session('carrito'), 'cantidad')) : 0 }}
                 </span>
             </a>
         </div>

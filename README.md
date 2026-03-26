@@ -68,4 +68,3 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # proyecto-final-
 # proyecto-final-
 # proyecto-final-
-# ZT_SHOES

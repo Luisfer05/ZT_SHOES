@@ -42,7 +42,7 @@ class PedidoController extends Controller
         }
 
         $registros = $query->paginate(10);
-        $vista = auth()->user()->can('pedido-list') ? 'pedido.index' : 'pedido.perfil_pedidos';
+        $vista = auth()->user()->can('pedido-list') ? 'pedido.index' : 'pedido.perfil';
         return view($vista, compact('registros', 'texto'));
     }
 

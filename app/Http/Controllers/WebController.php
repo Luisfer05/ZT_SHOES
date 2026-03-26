@@ -10,16 +10,10 @@ class WebController extends Controller
     // ── Página de inicio (landing) ──────────────────────────────
     public function home()
     {
-        // Productos marcados para el slider "Nueva Colección"
-        $coleccion = Producto::where('en_coleccion', true)
-                        ->whereNotNull('imagen')
-                        ->latest()
-                        ->get();
-
-        // 4 productos más recientes para la sección "Productos destacados"
+        // 4 productos más recientes para la sección destacados
         $destacados = Producto::latest()->take(4)->get();
 
-        return view('web.home', compact('destacados', 'coleccion'));
+        return view('web.home', compact('destacados'));
     }
 
     // ── Tienda con buscador y paginación ────────────────────────

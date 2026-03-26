@@ -21,12 +21,12 @@ Route::get('/tienda', [WebController::class, 'index'])->name('tienda');
 Route::get('/producto/{id}', [WebController::class, 'show'])->name('web.show');
 
 // ── Carrito (público) ────────────────────────────────────────────
-Route::get('/carrito',               [CarritoController::class, 'mostrar'])->name('carrito.mostrar');
-Route::post('/carrito/agregar',      [CarritoController::class, 'agregar'])->name('carrito.agregar');
-Route::get('/carrito/sumar',         [CarritoController::class, 'sumar'])->name('carrito.sumar');
-Route::get('/carrito/restar',        [CarritoController::class, 'restar'])->name('carrito.restar');
-Route::get('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-Route::get('/carrito/vaciar',        [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
+Route::get('/carrito',              [CarritoController::class, 'mostrar'])->name('carrito.mostrar');
+Route::post('/carrito/agregar',     [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::get('/carrito/sumar',        [CarritoController::class, 'sumar'])->name('carrito.sumar');
+Route::get('/carrito/restar',       [CarritoController::class, 'restar'])->name('carrito.restar');
+Route::get('/carrito/eliminar/{id}',[CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+Route::get('/carrito/vaciar',       [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
 
 // ── Protegidas (auth) ────────────────────────────────────────────
 Route::middleware(['auth'])->group(function () {
@@ -35,12 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('productos', ProductoController::class);
 
-    // Toggle "Nueva Colección"
-    Route::patch('productos/{producto}/coleccion', [ProductoController::class, 'toggleColeccion'])->name('productos.coleccion');
-
-    Route::post('/pedido/realizar',      [PedidoController::class, 'realizar'])->name('pedido.realizar');
-    Route::get('/perfil/pedidos',        [PedidoController::class, 'index'])->name('perfil.pedidos');
-    Route::patch('/pedidos/{id}/estado', [PedidoController::class, 'cambiarEstado'])->name('pedidos.cambiar.estado');
+    Route::post('/pedido/realizar',       [PedidoController::class, 'realizar'])->name('pedido.realizar');
+    Route::get('/perfil/pedidos',         [PedidoController::class, 'index'])->name('perfil.pedidos');
+    Route::patch('/pedidos/{id}/estado',  [PedidoController::class, 'cambiarEstado'])->name('pedidos.cambiar.estado');
 
     Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 

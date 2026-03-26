@@ -438,13 +438,6 @@
                                 </button>
                                 </form>
                             </div>
-=======
-                            <form action="{{ route('pedido.realizar') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn-checkout">
-                                    <i class="bi bi-credit-card me-2"></i>Realizar pedido
-                                </button>
-                            </form>
                         @else
                             <button class="btn-checkout" disabled>Realizar pedido</button>
                         @endif

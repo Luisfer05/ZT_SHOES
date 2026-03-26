@@ -118,19 +118,6 @@
 
     .zt-slide.active img { transform: scale(1.06); }
 
-    .zt-slide-label {
-        position:absolute; bottom:0; left:0; right:0;
-        padding:14px 16px 16px;
-        background:linear-gradient(to top, rgba(26,18,18,0.72) 0%, transparent 100%);
-        display:flex; justify-content:space-between; align-items:flex-end;
-        opacity:0; transition:opacity 0.3s;
-    }
-    .zt-slide:hover .zt-slide-label,
-    .zt-slide.active .zt-slide-label { opacity:1; }
-    .zt-slide-name { font-size:13px; font-weight:500; color:#fff; line-height:1.3; max-width:65%; }
-    .zt-slide-price { font-size:13px; font-weight:600; color:#e8b4b8; white-space:nowrap; }
-
-=======
     /* Dots */
     .zt-slider-dots {
         position: absolute; bottom: 16px; left: 50%;
@@ -341,41 +328,11 @@
                 </div>
             </div>
 
-            {{-- Slider derecho — productos marcados en "Nueva Colección" --}}
+            {{-- Slider derecho --}}
             <div class="zt-slider-wrap">
                 <span class="zt-slider-badge">Nueva colección</span>
 
                 <div class="zt-slider" id="ztSlider">
-                    @if($coleccion->isEmpty())
-                        {{-- Fallback: imágenes de galería si aún no hay productos seleccionados --}}
-                        @php
-                            $fallback = [
-                                'assets/img/gallery/img1.png',
-                                'assets/img/gallery/mg2.png',
-                                'assets/img/gallery/img3.png',
-                                'assets/img/gallery/img4.png',
-                                'assets/img/gallery/img5.png',
-                            ];
-                        @endphp
-                        @foreach($fallback as $i => $src)
-                            <div class="zt-slide {{ $i === 0 ? 'active' : '' }}">
-                                <img src="{{ asset($src) }}" alt="ZT Shoes colección {{ $i + 1 }}" loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
-                            </div>
-                        @endforeach
-                    @else
-                        @foreach($coleccion as $i => $prod)
-                            <a href="{{ route('web.show', $prod->id) }}" class="zt-slide {{ $i === 0 ? 'active' : '' }}" style="display:block;text-decoration:none;">
-                                <img src="{{ asset('uploads/productos/' . $prod->imagen) }}"
-                                     alt="{{ $prod->nombre }}"
-                                     loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
-                                <div class="zt-slide-label">
-                                    <span class="zt-slide-name">{{ $prod->nombre }}</span>
-                                    <span class="zt-slide-price">{{ moneda($prod->precio) }}</span>
-                                </div>
-                            </a>
-                        @endforeach
-                    @endif
-=======
                     @php
                         $slides = [
                             'assets/img/gallery/img1.png',
@@ -397,11 +354,6 @@
                 <button class="zt-slider-btn next" id="ztNext" aria-label="Siguiente">&#8594;</button>
 
                 <div class="zt-slider-dots" id="ztDots">
-                    @php $total = $coleccion->isEmpty() ? 5 : $coleccion->count(); @endphp
-                    @for($i = 0; $i < $total; $i++)
-                        <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
-                    @endfor
-=======
                     @foreach($slides as $i => $src)
                         <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
                     @endforeach
