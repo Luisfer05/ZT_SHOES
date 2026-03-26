@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class ResetPasswordController extends Controller
 {
@@ -28,9 +29,13 @@ class ResetPasswordController extends Controller
             ['token' => $token, 'created_at' => now()]
         );
 
-        Mail::send('emails.reset-password', ['token' => $token], function ($message) use ($request) {
-            $message->to($request->email)->subject('Recuperación de contraseña – ZT|SHOES');
-        });
+        try {
+            Mail::send('emails.reset-password', ['token' => $token], function ($message) use ($request) {
+                $message->to($request->email)->subject('Recuperación de contraseña – ZT|SHOES');
+            });
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => 'No se pudo enviar el correo. Verifica que el email sea correcto e intenta de nuevo.']);
+        }
 
         return back()->with('mensaje', 'Te hemos enviado un enlace de recuperación. Revisa tu bandeja de entrada.');
     }
@@ -57,7 +62,7 @@ class ResetPasswordController extends Controller
         }
 
         // Verificar expiración (60 minutos)
-        if (now()->diffInMinutes($reset->created_at) > 60) {
+        if (Carbon::parse($reset->created_at)->diffInMinutes(now()) > 60) {
             DB::table('password_reset_tokens')->where('email', $request->email)->delete();
             return back()->withErrors(['email' => 'El enlace ha expirado. Solicita uno nuevo.']);
         }
