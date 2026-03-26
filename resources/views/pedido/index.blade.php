@@ -280,6 +280,10 @@
                                         data-bs-target="#detalles-{{ $reg->id }}">
                                         <i class="bi bi-eye"></i> Ver
                                     </button>
+                                    <a href="{{ route('pedidos.seguimiento', $reg->id) }}"
+                                       class="ped-btn-detalle" style="margin-left:6px;background:#f0faf4;color:#1a5c38;border-color:#b8dfc9;">
+                                        <i class="bi bi-truck"></i> Seguimiento
+                                    </a>
                                 </td>
                             </tr>
 

@@ -46,6 +46,23 @@ class PedidoController extends Controller
         return view($vista, compact('registros', 'texto'));
     }
 
+    public function seguimiento($id)
+    {
+        if (!auth()->user()->can('pedido-list')) {
+            abort(403, 'No tienes permisos.');
+        }
+
+        $pedido = Pedido::with('user', 'detalles.producto')->findOrFail($id);
+
+        // Reutilizamos la vista de perfil_pedidos pero con un solo pedido
+        // Pasamos como colección paginada falsa usando una colección simple
+        $registros = new \Illuminate\Pagination\LengthAwarePaginator(
+            collect([$pedido]), 1, 10, 1
+        );
+
+        return view('pedido.seguimiento_admin', compact('registros', 'pedido'));
+    }
+
     public function realizar(Request $request)
     {
         // Validar dirección de envío
@@ -187,7 +204,13 @@ class PedidoController extends Controller
             Log::warning('No se pudo enviar email de estado pedido #' . $pedido->id . ': ' . $mailEx->getMessage());
         }
 
-        return redirect()->back()->with('mensaje',
-            'Estado del pedido #' . $pedido->id . ' actualizado a "' . ucfirst($estadoNuevo) . '".');
+        $redirectUrl = $request->input('_redirect', null);
+        $mensaje = 'Estado del pedido #' . $pedido->id . ' actualizado a "' . ucfirst($estadoNuevo) . '".';
+
+        if ($redirectUrl) {
+            return redirect($redirectUrl)->with('mensaje', $mensaje);
+        }
+
+        return redirect()->back()->with('mensaje', $mensaje);
     }
 }

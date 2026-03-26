@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/pedido/realizar',       [PedidoController::class, 'realizar'])->name('pedido.realizar');
     Route::get('/perfil/pedidos',         [PedidoController::class, 'index'])->name('perfil.pedidos');
+    Route::get('/pedidos/{id}/seguimiento', [PedidoController::class, 'seguimiento'])->name('pedidos.seguimiento');
     Route::patch('/pedidos/{id}/estado',  [PedidoController::class, 'cambiarEstado'])->name('pedidos.cambiar.estado');
 
     Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
