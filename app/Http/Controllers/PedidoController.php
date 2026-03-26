@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\PedidoDetalle;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 use App\Models\Producto;
 use App\Mail\PedidoConfirmacion;
 use App\Mail\PedidoEstadoActualizado;
@@ -14,6 +18,16 @@ use Illuminate\Support\Facades\Mail;
 
 class PedidoController extends Controller
 {
+<<<<<<< HEAD
+=======
+=======
+use Illuminate\Support\Facades\DB;
+
+class PedidoController extends Controller
+{
+    // Mensajes de notificación simulada por estado
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
     private array $mensajesEstado = [
         'procesando' => '📦 Tu pedido está siendo procesado. Pronto lo prepararemos para envío.',
         'enviado'    => '🚚 ¡Tu pedido está en camino! Ya fue despachado.',
@@ -42,12 +56,25 @@ class PedidoController extends Controller
         }
 
         $registros = $query->paginate(10);
+<<<<<<< HEAD
         $vista = auth()->user()->can('pedido-list') ? 'pedido.index' : 'pedido.perfil_pedidos';
+=======
+<<<<<<< HEAD
+        $vista = auth()->user()->can('pedido-list') ? 'pedido.index' : 'pedido.perfil_pedidos';
+=======
+        // Admin ve pedido.index, cliente ve pedido.perfil
+        $vista = auth()->user()->can('pedido-list') ? 'pedido.index' : 'pedido.perfil';
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         return view($vista, compact('registros', 'texto'));
     }
 
     public function realizar(Request $request)
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         // Validar dirección de envío
         $request->validate([
             'direccion' => 'required|string|max:255',
@@ -59,6 +86,11 @@ class PedidoController extends Controller
             'ciudad.required'    => 'La ciudad es obligatoria.',
         ]);
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         $carritoKey = auth()->check() ? 'carrito_' . auth()->id() : 'carrito_guest';
         $carrito    = session()->get($carritoKey, []);
 
@@ -66,6 +98,10 @@ class PedidoController extends Controller
             return redirect()->back()->with('error', 'El carrito está vacío.');
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         // Validar que todos los productos aún existen en la BD
         $idsCarrito     = array_keys($carrito);
         $productosExist = Producto::whereIn('id', $idsCarrito)->pluck('id')->toArray();
@@ -97,6 +133,19 @@ class PedidoController extends Controller
                 'ciudad'    => $request->ciudad,
                 'telefono'  => $request->telefono,
                 'notas'     => $request->notas,
+<<<<<<< HEAD
+=======
+=======
+        DB::beginTransaction();
+        try {
+            $total = array_sum(array_map(fn($i) => $i['precio'] * $i['cantidad'], $carrito));
+
+            $pedido = Pedido::create([
+                'user_id' => auth()->id(),
+                'total'   => $total,
+                'estado'  => 'pendiente',
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             ]);
 
             foreach ($carrito as $productoId => $item) {
@@ -111,6 +160,10 @@ class PedidoController extends Controller
             session()->forget($carritoKey);
             DB::commit();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             // Enviar email de confirmación
             try {
                 Mail::to($pedido->user->email)->send(new PedidoConfirmacion($pedido->load('detalles.producto', 'user')));
@@ -129,15 +182,36 @@ class PedidoController extends Controller
                 'error'   => $e->getMessage(),
                 'trace'   => $e->getTraceAsString(),
             ]);
+<<<<<<< HEAD
+=======
+=======
+            return redirect()->route('perfil.pedidos')
+                ->with('mensaje', '🎉 ¡Pedido #' . $pedido->id . ' realizado correctamente! Te notificaremos cuando sea procesado.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             return redirect()->back()->with('error', 'Hubo un error al procesar el pedido. Intenta de nuevo.');
         }
     }
 
     public function cambiarEstado(Request $request, $id)
     {
+<<<<<<< HEAD
         $pedido       = Pedido::with('user')->findOrFail($id);
         $estadoNuevo  = $request->input('estado');
         $estadoActual = $pedido->estado;
+=======
+<<<<<<< HEAD
+        $pedido       = Pedido::with('user')->findOrFail($id);
+        $estadoNuevo  = $request->input('estado');
+        $estadoActual = $pedido->estado;
+=======
+        $pedido      = Pedido::with('user')->findOrFail($id);
+        $estadoNuevo = $request->input('estado');
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
 
         $estadosPermitidos = ['procesando', 'enviado', 'entregado', 'anulado', 'cancelado'];
 
@@ -145,6 +219,13 @@ class PedidoController extends Controller
             abort(422, 'Estado no válido.');
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        // Validar que el flujo sea lógico
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         $flujoValido = [
             'pendiente'  => ['procesando', 'anulado'],
             'procesando' => ['enviado', 'anulado'],
@@ -154,11 +235,25 @@ class PedidoController extends Controller
             'cancelado'  => [],
         ];
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        $estadoActual = $pedido->estado;
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         if (!in_array($estadoNuevo, $flujoValido[$estadoActual] ?? [])) {
             return redirect()->back()->with('error',
                 "No se puede cambiar de \"{$estadoActual}\" a \"{$estadoNuevo}\".");
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        // Verificar permisos
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         if (!auth()->user()->can('pedido-anulate')) {
             return redirect()->back()->with('error', 'No tienes permiso para cambiar estados.');
         }
@@ -166,6 +261,10 @@ class PedidoController extends Controller
         $pedido->estado = $estadoNuevo;
         $pedido->save();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         // Notificación en sesión (para cuando el cliente entre)
         $msgCliente = $this->mensajesEstado[$estadoNuevo] ?? null;
         if ($msgCliente && $pedido->user) {
@@ -175,10 +274,29 @@ class PedidoController extends Controller
                 'pedido_id' => $pedido->id,
                 'estado'    => $estadoNuevo,
                 'fecha'     => now()->format('d/m/Y H:i'),
+<<<<<<< HEAD
+=======
+=======
+        // Notificación simulada — guardar en sesión del CLIENTE
+        $msgCliente = $this->mensajesEstado[$estadoNuevo] ?? null;
+        if ($msgCliente && $pedido->user) {
+            // Guardamos la notificación en una clave de sesión que el cliente verá al entrar
+            $notis = session()->get('notificaciones_' . $pedido->user_id, []);
+            $notis[] = [
+                'mensaje'    => $msgCliente,
+                'pedido_id'  => $pedido->id,
+                'estado'     => $estadoNuevo,
+                'fecha'      => now()->format('d/m/Y H:i'),
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
             ];
             session()->put('notificaciones_' . $pedido->user_id, $notis);
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         // Enviar email al cliente con el nuevo estado
         try {
             Mail::to($pedido->user->email)
@@ -187,6 +305,11 @@ class PedidoController extends Controller
             Log::warning('No se pudo enviar email de estado pedido #' . $pedido->id . ': ' . $mailEx->getMessage());
         }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
         return redirect()->back()->with('mensaje',
             'Estado del pedido #' . $pedido->id . ' actualizado a "' . ucfirst($estadoNuevo) . '".');
     }

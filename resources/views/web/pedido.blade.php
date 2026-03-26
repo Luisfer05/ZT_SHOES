@@ -392,6 +392,10 @@
                         <button class="btn-checkout" disabled>Realizar pedido</button>
                     @else
                         @if(count($carrito) > 0)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                             {{-- Dirección de envío --}}
                             <div style="margin-bottom:16px;">
                                 <p style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose-dark);margin-bottom:12px;">
@@ -438,6 +442,17 @@
                                 </button>
                                 </form>
                             </div>
+<<<<<<< HEAD
+=======
+=======
+                            <form action="{{ route('pedido.realizar') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn-checkout">
+                                    <i class="bi bi-credit-card me-2"></i>Realizar pedido
+                                </button>
+                            </form>
+>>>>>>> b066d58b056846fdea27ccd1051ac3b9f0e73921
+>>>>>>> 1a6a8ea3e00212ff626f4e9306d3ae76237ed661
                         @else
                             <button class="btn-checkout" disabled>Realizar pedido</button>
                         @endif
