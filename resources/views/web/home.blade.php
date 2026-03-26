@@ -1,5 +1,5 @@
 @extends('web.app')
-@section('titulo', 'ZT|SHOES — Inicio')
+@section('titulo', 'ZT|SHOES &mdash; Inicio')
 
 @push('estilos')
 <style>
@@ -319,7 +319,7 @@
                     Camina con<br><em>estilo</em> propio
                 </h1>
                 <p class="zt-hero-sub">
-                    Calzado diseñado para quienes no siguen tendencias — las crean.
+                    Calzado diseñado para quienes no siguen tendencias &mdash; las crean.
                     Cada par cuenta una historia única.
                 </p>
                 <div class="zt-hero-actions">
@@ -333,30 +333,39 @@
                 <span class="zt-slider-badge">Nueva colección</span>
 
                 <div class="zt-slider" id="ztSlider">
-                    @php
-                        $slides = [
-                            'assets/img/gallery/img1.png',
-                            'assets/img/gallery/mg2.png',
-                            'assets/img/gallery/img3.png',
-                            'assets/img/gallery/img4.png',
-                            'assets/img/gallery/img5.png',
-                        ];
-                    @endphp
-
-                    @foreach($slides as $i => $src)
-                        <div class="zt-slide {{ $i === 0 ? 'active' : '' }}">
-                            <img src="{{ asset($src) }}" alt="ZT Shoes colección {{ $i + 1 }}" loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
-                        </div>
-                    @endforeach
+                    @if($coleccion->isNotEmpty())
+                        @foreach($coleccion as $i => $prod)
+                            <div class="zt-slide {{ $i === 0 ? 'active' : '' }}">
+                                @if($prod->imagen)
+                                    <img src="{{ asset('uploads/productos/' . $prod->imagen) }}" alt="{{ $prod->nombre }}" loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
+                                @else
+                                    <div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:80px;">&#128095;</div>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                        @php $slides = ['assets/img/gallery/img1.png','assets/img/gallery/mg2.png','assets/img/gallery/img3.png']; @endphp
+                        @foreach($slides as $i => $src)
+                            <div class="zt-slide {{ $i === 0 ? 'active' : '' }}">
+                                <img src="{{ asset($src) }}" alt="ZT Shoes colección {{ $i + 1 }}" loading="{{ $i === 0 ? 'eager' : 'lazy' }}">
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
 
                 <button class="zt-slider-btn prev" id="ztPrev" aria-label="Anterior">&#8592;</button>
                 <button class="zt-slider-btn next" id="ztNext" aria-label="Siguiente">&#8594;</button>
 
                 <div class="zt-slider-dots" id="ztDots">
-                    @foreach($slides as $i => $src)
-                        <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
-                    @endforeach
+                    @if($coleccion->isNotEmpty())
+                        @foreach($coleccion as $i => $prod)
+                            <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
+                        @endforeach
+                    @else
+                        @foreach([0,1,2] as $i)
+                            <button class="zt-dot {{ $i === 0 ? 'active' : '' }}" data-index="{{ $i }}" aria-label="Imagen {{ $i + 1 }}"></button>
+                        @endforeach
+                    @endif
                 </div>
             </div>
 
@@ -374,7 +383,7 @@
                 Hechos para <em>durar</em>,<br>diseñados para brillar
             </h2>
             <p class="zt-about-body">
-                En ZT|SHOES creemos que el calzado es más que una prenda — es una declaración.
+                En ZT|SHOES creemos que el calzado es más que una prenda &mdash; es una declaración.
                 Cada par nace de materiales cuidadosamente seleccionados y un proceso artesanal
                 que garantiza comodidad sin sacrificar el estilo.
             </p>
@@ -392,7 +401,7 @@
                     <div class="zt-stat-label">Modelos únicos</div>
                 </div>
                 <div>
-                    <div class="zt-stat-num">5★</div>
+                    <div class="zt-stat-num">5&#9733;</div>
                     <div class="zt-stat-label">Valoración media</div>
                 </div>
             </div>
@@ -407,7 +416,7 @@
                 <p class="zt-featured-eyebrow">Lo más nuevo</p>
                 <h2 class="zt-featured-title">Productos destacados</h2>
             </div>
-            <a href="{{ route('tienda') }}" class="zt-btn-ghost" style="white-space:nowrap;">Ver todos →</a>
+            <a href="{{ route('tienda') }}" class="zt-btn-ghost" style="white-space:nowrap;">Ver todos &rarr;</a>
         </div>
 
         <div class="zt-featured-grid">

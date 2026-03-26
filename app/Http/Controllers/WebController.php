@@ -13,7 +13,10 @@ class WebController extends Controller
         // 4 productos más recientes para la sección destacados
         $destacados = Producto::latest()->take(4)->get();
 
-        return view('web.home', compact('destacados'));
+        // Productos marcados como "nueva colección" para el slider del hero
+        $coleccion = Producto::where('en_coleccion', true)->latest()->take(5)->get();
+
+        return view('web.home', compact('destacados', 'coleccion'));
     }
 
     // ── Tienda con buscador y paginación ────────────────────────

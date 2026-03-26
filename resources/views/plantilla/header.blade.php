@@ -121,7 +121,7 @@
         <ul class="navbar-nav mx-auto zt-nav-center">
             
             <li class="nav-item d-none d-md-block">
-                <a href="{{ route('web.home') }}" class="nav-link">Tienda</a>
+                <a href="{{ route('web.home') }}" class="nav-link">Inicio</a>
             </li>
             @hasrole('admin')
             <li class="nav-item d-none d-md-block">

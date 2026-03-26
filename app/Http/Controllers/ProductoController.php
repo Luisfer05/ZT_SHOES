@@ -54,6 +54,7 @@ class ProductoController extends Controller
             $registro->imagen = $nombreImagen;
         }
 
+        $registro->en_coleccion = $request->boolean('en_coleccion');
         $registro->save();
         return redirect()->route('productos.index')->with('mensaje', 'Registro '.$registro->nombre. '  agregado correctamente');
     }
@@ -99,9 +100,24 @@ class ProductoController extends Controller
             $registro->imagen = $nombreImagen;
         }
 
+        $registro->en_coleccion = $request->boolean('en_coleccion');
         $registro->save();
 
         return redirect()->route('productos.index')->with('mensaje', 'Registro '.$registro->nombre. '  actualizado correctamente');
+    }
+
+    /**
+     * Activa o desactiva el producto en la sección "Nueva Colección".
+     */
+    public function toggleColeccion(string $id)
+    {
+        $this->authorize('producto-edit');
+        $registro = Producto::findOrFail($id);
+        $registro->en_coleccion = !$registro->en_coleccion;
+        $registro->save();
+
+        $estado = $registro->en_coleccion ? 'agregado a' : 'removido de';
+        return redirect()->back()->with('mensaje', $registro->nombre . ' ' . $estado . ' la nueva colección.');
     }
 
     /**

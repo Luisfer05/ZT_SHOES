@@ -117,6 +117,25 @@
     }
     .pr-footer .page-item.active .page-link { background:var(--ink); border-color:var(--ink); color:#fff; }
 
+    /* Botón toggle colección */
+    .pr-btn-coleccion {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 36px; height: 36px; border-radius: 10px;
+        border: 1.5px solid #f0e0e2; background: #fff;
+        cursor: pointer; transition: all 0.2s; font-size: 17px;
+        line-height: 1;
+    }
+    .pr-btn-coleccion:hover { background: #fff8e1; border-color: #f6c90e; transform: scale(1.1); }
+    .pr-btn-coleccion.activa { background: #fff8e1; border-color: #f6c90e; }
+    .pr-btn-coleccion.activa svg { fill: #f6c90e; stroke: #d4a800; }
+    .pr-btn-coleccion:not(.activa) svg { fill: none; stroke: #ccc; }
+    .pr-coleccion-badge {
+        display: inline-flex; align-items: center; gap: 4px;
+        font-size: 11px; font-weight: 500; color: #d4a800;
+        background: #fff8e1; border: 1px solid #f6c90e;
+        border-radius: 6px; padding: 2px 8px; white-space: nowrap;
+    }
+
     /* Modal eliminar */
     .pr-modal .modal-content { border:none; border-radius:16px; overflow:hidden; }
     .pr-modal .modal-header { background:#fff; border-bottom:0.5px solid #f5eaea; padding:18px 20px; }
@@ -197,12 +216,13 @@
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Imagen</th>
+                        <th>Colección</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if(count($registros) <= 0)
                         <tr>
-                            <td colspan="6">
+                            <td colspan="7">
                                 <div class="pr-empty">
                                     <div class="pr-empty-icon">
                                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c47a82" stroke-width="1.5">
@@ -252,6 +272,26 @@
                                     @else
                                         <div class="pr-no-img">👟</div>
                                     @endif
+                                </td>
+                                <td>
+                                    @can('producto-edit')
+                                    <form action="{{ route('productos.toggleColeccion', $reg->id) }}" method="POST" style="display:inline;">
+                                        @csrf @method('PATCH')
+                                        <button type="submit"
+                                            class="pr-btn-coleccion {{ $reg->en_coleccion ? 'activa' : '' }}"
+                                            title="{{ $reg->en_coleccion ? 'Quitar de Nueva Colección' : 'Agregar a Nueva Colección' }}">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" stroke-width="1.8">
+                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    @if($reg->en_coleccion)
+                                        <span class="pr-coleccion-badge" style="margin-top:5px;display:flex;">
+                                            <svg width="10" height="10" viewBox="0 0 24 24" fill="#f6c90e" stroke="#d4a800" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            En slider
+                                        </span>
+                                    @endif
+                                    @endcan
                                 </td>
                             </tr>
 

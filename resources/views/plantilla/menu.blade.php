@@ -178,7 +178,7 @@
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link" id="mnuDashboard">
                         <i class="nav-icon bi bi-speedometer2"></i>
-                        <p>Inicio</p>
+                        <p>Dashboard</p>
                     </a>
                 </li>
                 @endhasrole
